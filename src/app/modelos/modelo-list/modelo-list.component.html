@@ -1,0 +1,72 @@
+<!-- <p-table [value]="modelos">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Tipo de Documento</th>
+            <th>Ano</th>
+            <th>Estado</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-modelo>
+        <tr>
+            <td>{{modelo.tipoDocumento}}</td>
+            <td>{{modelo.ano}}</td>
+            <td>{{modelo.uf}}</td>
+        </tr>
+    </ng-template>
+</p-table> -->
+
+<!-- <form>
+    <table class="table table-striped">
+        <thread>
+            <tr>
+                <th scope="col" sortable="tipoDocumento" (sort)="onSort($event)">Tipo de documento</th>
+                <th scope="col" sortable="ano" (sort)="onSort($event)">Ano</th>
+                <th scope="col" sortable="uf" (sort)="onSort($event)">Estado</th> 
+            </tr>
+        </thread>
+        <tbody>
+            <tr *ngFor="let modelo of modelos$ | async">
+                <td><ngb-highlight [result]="modelo.tipoDocumento" ></ngb-highlight></td>>
+                <td><ngb-highlight [result]="modelo.ano"></ngb-highlight></td>>
+                <td><ngb-highlight [result]="modelo.uf"></ngb-highlight></td>>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between p-2">
+        <ngb-pagination 
+            [collectionSize]="(total$ | async)!" [(page)] ="page" [pagesize]="pageSize">
+        </ngb-pagination>
+
+        <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="pageSize">
+            <option [ngValue]="2">2</option>
+            <option [ngValue]="5">5</option>
+            <option [ngValue]="10">10</option>
+        </select>
+    </div>
+</form> -->
+<!-- 
+    [columns]="cols" [value]="modelos" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="Mostrando {first} to {last} de {totalRecords} entries"
+    <ng-template pTemplates="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="paginatorleft" let-state>
+        {{state.first}}
+        <button type="button" pButton icon="pi-refresh"></button>
+    </ng-template>
+
+    <ng-template pTemplate="paginatorright">
+        <button type="button" pButton icon="pi-cloud-upload"></button>
+    </ng-template> -->
