@@ -1,7 +1,9 @@
 import { OnInit, Component, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'app/core/services';
+
+
 
 @Component({
     templateUrl: './signin.component.html'
@@ -11,7 +13,7 @@ export class SignInComponent implements OnInit{
     fromUrl: string;
 
     loginForm: FormGroup;
-    @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
+    @ViewChild('userNameInput', { static: true }) userNameInput: ElementRef<HTMLInputElement>;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -36,9 +38,7 @@ export class SignInComponent implements OnInit{
         this.authService
             .authenticate(usuario, senha)
             .subscribe(
-                () => this.fromUrl
-                        ? this.router.navigateByUrl(this.fromUrl)
-                        : this.router.navigate(['user', usuario])
+                () =>  this.router.navigate(['modelo'])
                 ,
                 err => {
                     console.log(err);

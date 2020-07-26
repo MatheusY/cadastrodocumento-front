@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModeloService } from '../modelo/modelo.service';
-import { Modelo } from '../modelo/modelo.model';
+import { ModelosService } from 'app/core/services';
+import { Observable } from 'rxjs';
+import { Modelo } from 'app/shared/components/models';
 
 @Component({
     selector: 'ap-modelo-list',
@@ -9,7 +10,7 @@ import { Modelo } from '../modelo/modelo.model';
 })
 export class ModeloListComponent implements OnInit {
 
-    modelos: Modelo[];
+    modelos: Observable<Modelo[]>;
 
     cols: any[];
 
@@ -17,12 +18,12 @@ export class ModeloListComponent implements OnInit {
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private modeloService: ModeloService
+        private modeloService: ModelosService
     ){}
 
     ngOnInit(): void {
-         this.modeloService.list(5, 0).subscribe(modelos => this.modelos = modelos);
-
+        //  this.modelos = this.modeloService.list(5, 0);
+        console.log(this.activatedRoute);
          this.cols = [
             { field: 'tipoDocumento', header: 'Tipo de documento' },
             { field: 'ano', header: 'Ano' },

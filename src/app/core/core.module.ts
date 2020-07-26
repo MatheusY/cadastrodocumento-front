@@ -11,6 +11,7 @@ import { LoadingModule } from '../shared/components/loading/loading.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import {SidebarModule} from 'primeng/sidebar';
+import { AuthService } from './services';
 
 @NgModule({
     declarations:[
@@ -32,6 +33,7 @@ import {SidebarModule} from 'primeng/sidebar';
         SidebarModule,
     ],
     providers: [
+        AuthService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

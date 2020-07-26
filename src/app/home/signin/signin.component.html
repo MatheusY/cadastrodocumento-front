@@ -1,6 +1,6 @@
 <h4 class="text-center">Login</h4>
 
-<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
+<form [formGroup]="loginForm" class="form mt-4">
 
     <div class="form-group">
         <input #userNameInput
@@ -26,10 +26,13 @@
         </ap-vmessage>
     </div>
 
-    <button
+    <button pButton
         [disabled]="loginForm.invalid"
-        type="submit"
+        label="login"
+        type="button"
+        (click)="login()"
         class="btn btn-primary btn-block">
-        login
     </button>
+
+    <!-- <p-button label="Click" (onClick)="login($event)"></p-button> -->
 </form>

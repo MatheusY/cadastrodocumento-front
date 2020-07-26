@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User } from './user';
+import { User } from 'app/shared/components/models';
 import { TokenService } from '../token/token.service';
 
 import * as jtw_decode from 'jwt-decode';

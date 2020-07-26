@@ -6,6 +6,7 @@ import { SignInComponent } from './signin/signin.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing.module';
 import { VMessageModule } from '../shared/components/vmessage/vmessage.module';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { VMessageModule } from '../shared/components/vmessage/vmessage.module';
     imports: [
         CommonModule,
         FormsModule,
+        ButtonModule,
         ReactiveFormsModule,
         RouterModule,
         VMessageModule,
