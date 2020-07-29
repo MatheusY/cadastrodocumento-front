@@ -9,7 +9,6 @@ export class MenuComponent {
     isShown = false;
 
     toggle() {
-        console.log(this.isShown);
         this.isShown = !this.isShown;
     }
 }

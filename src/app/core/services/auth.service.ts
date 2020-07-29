@@ -15,7 +15,6 @@ export class AuthService {
         private userService: UserService) { }
     
     authenticate(usuario: string, senha: string){
-        console.log(usuario);
         return this.http
             .post(API_URL + '/auth',
             { usuario, senha },

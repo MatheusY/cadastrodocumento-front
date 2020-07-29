@@ -29,7 +29,6 @@ export class HeaderComponent {
     }
     
     onClick(){
-        console.log('Clicou');
         this.display = !this.display;
     }
 }

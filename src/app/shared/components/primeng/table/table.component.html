@@ -1,0 +1,30 @@
+<p-table
+    id="modeloTable"
+    [value]="dataSource.data"
+    [lazy]="true"
+    [rows]="dataSource.pageable?.pageSize"
+    [responsive]="true"
+    [paginator]="true"
+    [rowsPerPageOptions]="[5,10]"
+    [totalRecords]="dataSource.total"
+    [first]="first"
+    currentPageReportTemplate="{currentPage} de {totalPages}"
+    [showCurrentPageReport]="false"
+    (onPage)="onPageChanged($event)">
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let columnName of columnNames" scope="col">{{columnName}}</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-row>
+        <tr>
+            <td *ngFor="let col of columns">
+                <ng-container *ngTemplateOutlet="col.template; context: {$implicit: row}"></ng-container>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorright" let-state>
+        <span>Total de {{state.totalRecords}} {{state.totalRecords > 1 ? 'registros' : 'registro'}}</span>
+    </ng-template>
+
+</p-table>

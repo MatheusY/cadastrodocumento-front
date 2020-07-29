@@ -56,6 +56,10 @@ export class MsTableDataSource<E extends AbstractModel<ID>, ID> extends DataSour
             });
     }
 
+    onPageChanged(pageable: Pageable): void {
+        this.load(this.toHttpParams(pageable));
+    }
+
     set httpParams(params: HttpParams) {
         if(params){
             this._httpParams = new HttpParams();
