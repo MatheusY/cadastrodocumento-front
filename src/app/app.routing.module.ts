@@ -8,11 +8,12 @@ const routes: Routes = [
 
     {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => HomeModule)
+        loadChildren: () => import('./home/home.module').then(m => HomeModule),
     },
     {
         path: 'modelo',
         loadChildren: () => import('./pages/modelos/modelos.module').then(m => ModelosModule),
+        canActivate: [AuthGuard]
     },
     {
         path: '',
