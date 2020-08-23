@@ -1,5 +1,32 @@
+.botao-filtro {
+    clear: left;
+    margin-right: 10px;
+    float: right;
+    display: block;
+}
+
+#reset {
+    margin-right: 10px;
+}
+
 .listagem {
     margin-left: 10%;
+}
+
+.filtro {
+    border-width: 1px;
+    border-style: solid;
+    border-color: darkgray;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-bottom: 10px;
+    width: 90%;
+}
+
+.filtro::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* You can add global styles to this file, and also import other style files */

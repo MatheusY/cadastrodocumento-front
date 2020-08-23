@@ -24,7 +24,6 @@ export class TableComponent<E extends AbstractModel<ID>, ID> implements AfterCon
         this.columns.forEach(column => {
             this.columnNames.push(column.header);
         });
-        console.log(this.dataSource.pageable);
     }
 
     onPageChanged(event: any): void {

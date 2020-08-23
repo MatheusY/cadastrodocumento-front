@@ -1,5 +1,5 @@
 <component-table id="datatable" title="Modelos cadastrados" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)">
-    <component-column-text id="tipoDocumento" header="Documento" property="tipoDocumento"></component-column-text>
-    <component-column-text id="uf" header="UF" property="uf"></component-column-text>
+    <component-column-text id="tipoDocumento" header="Documento" property="tipoDocumento.nome"></component-column-text>
+    <component-column-text id="uf" header="UF" property="uf.nome"></component-column-text>
     <component-column-text id="ano" header="Ano" property="ano"></component-column-text>
 </component-table>

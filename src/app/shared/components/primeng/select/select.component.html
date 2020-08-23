@@ -1,0 +1,13 @@
+<component-label [id]="id + '--label'" [target]="id + '--input'" [value]="label" [required]="control?.errors?.empty"></component-label>
+
+<p-dropdown
+    [inputId]="id + '--input'"
+    [selectId]="id + '--select'"
+    [name]=name
+    [formControlName]="formControlName"
+    [options]="options"
+    [showClear]="true"
+    placeholder="Selecione"
+    [optionLabel]="optionLabel"
+    (onChange)="onChange($event)">
+</p-dropdown>

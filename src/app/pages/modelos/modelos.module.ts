@@ -6,6 +6,7 @@ import { ModeloListComponent } from './modelo-list/modelo-list.component';
 import { ModelosRoutingModule } from './modelos.routing.module';
 import { ModeloTableComponent } from './shared/modelo-table/modelo-table.component';
 import { SharedComponentsModule } from 'app/shared/components/components.module';
+import { ModeloFilterComponent } from './shared/modelo-filter/modelo-filter.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { SharedComponentsModule } from 'app/shared/components/components.module'
     declarations: [
         ModeloListComponent,
         ModeloTableComponent,
+        ModeloFilterComponent,
     ]
 })
 export class ModelosModule {}

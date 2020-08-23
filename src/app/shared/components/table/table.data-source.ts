@@ -56,6 +56,14 @@ export class MsTableDataSource<E extends AbstractModel<ID>, ID> extends DataSour
             });
     }
 
+    clear(): void {
+        this.total = 0;
+        this.data = [];
+        this.loadingSubject.next(true);
+        this.pageSubject.next([]);
+        this.loadingSubject.next(false);
+    }
+
     onPageChanged(pageable: Pageable): void {
         this.load(this.toHttpParams(pageable));
     }

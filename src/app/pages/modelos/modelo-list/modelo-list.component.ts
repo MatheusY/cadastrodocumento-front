@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModelosService } from 'app/core/services';
 import { Observable } from 'rxjs';
-import { Modelo } from 'app/shared/components/models';
+
+import { ModelosService, TiposDocumentosService, UfsService } from 'app/core/services';
+import { Modelo, Uf, TipoDocumento } from 'app/shared/components/models';
 import { PageListComponent } from 'app/shared/components/page/page-list.component';
 
 @Component({
@@ -13,24 +14,19 @@ export class ModeloListComponent extends PageListComponent<Modelo, number> imple
 
     modelos: Observable<Modelo[]>;
 
-    cols: any[];
-
-    rows = 5;
+    ufs$: Observable<Uf[]>;
+    tiposDocumentos$: Observable<TipoDocumento[]>
 
     constructor(
         protected router: Router,
         protected activatedRoute: ActivatedRoute,
-        protected modeloService: ModelosService
+        protected modeloService: ModelosService,
+        protected tipoDocumentoService: TiposDocumentosService,
+        protected ufService: UfsService
     ){
         super(router, activatedRoute, modeloService);
+        this.ufs$ = ufService.listAll();
+        this.tiposDocumentos$ = tipoDocumentoService.listAll();
     }
 
-    ngOnInit(): void {
-        this.dataSource.connect().subscribe(modelo => console.log(modelo));
-        this.cols = [
-            { field: 'tipoDocumento', header: 'Tipo de documento' },
-            { field: 'ano', header: 'Ano' },
-            { field: 'uf', header: 'Estado' }
-         ];
-    }
 }

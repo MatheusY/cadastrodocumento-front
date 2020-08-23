@@ -1,6 +1,8 @@
 import { ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
+import pickBy from 'lodash/pickBy';
+import identity from 'lodash/identity';
 
 import { Observable, of } from 'rxjs';
 import { MsTableDataSource } from '../table/table.data-source';
@@ -60,10 +62,25 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
         this.search();
     }
 
+    onReset(even?: any): void {
+        this.filterForm.form.reset();
+        this.dataSource.clear();
+        this.router.navigate([],{});
+        this.pageable = new Pageable();
+
+        this.search();
+
+    }
+
+    onSearch(event?: any): void {
+        this.pageable = new Pageable();
+        this.search();
+    }
+
     get searchParams(): {[param: string]: string} {
         let params = this.filterForm ? this.filterForm.form.value : {};
-        
-        return params;
+        this.filterForm.form.value;
+        return pickBy(params, identity);
     }
 
     private search(): void {

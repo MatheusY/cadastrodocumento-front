@@ -1,0 +1,18 @@
+<button pButton
+    [type]="options.type"
+    [label]="options.active ? options.loadingText : options.text"
+    [icon]="options?.icon?.fontIcon"
+    [disabled]="options.active || options.disabled"
+    [class.progress-spenner]="isProgressSpinner()"
+    [class.active]="options.active"
+    [ngClass]="options.styleClass">
+
+    <ng-container *ngIf="isProgressSpinner() && options.active">
+      <p-progressSpinner
+        [class.active]="options.active && !options.disabled"
+        [strokeWidth]="6"
+        animationDuration="1s"
+        [style]="{width: '20px', height: '20px'}">
+      </p-progressSpinner>
+    </ng-container>
+</button>

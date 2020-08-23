@@ -41,6 +41,10 @@ export const findById = <E extends AbstractModel<ID>, ID>
         return http.get<E>(url);
     };
 
+export const listAll = <E extends AbstractModel<ID>, ID>(http: HttpClient, endpoint: string): Observable<E[]> => {
+    return http.get<E[]>(endpoint);
+    };
+
 
 
 export abstract class AbstractService<E extends AbstractModel<ID>, ID> implements Resolve<E> {
@@ -55,6 +59,10 @@ export abstract class AbstractService<E extends AbstractModel<ID>, ID> implement
     query(httpParams: HttpParams): Observable<Page<E>>{
         return query(this.http, this.endpoint, httpParams);
     }
+
+    listAll(): Observable<E[]> {
+        return listAll(this.http, `${this.endpoint}/all`);
+      }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<E>  {
         const id: any = route.paramMap.get('id');

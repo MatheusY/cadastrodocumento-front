@@ -1,0 +1,25 @@
+
+.ui-button.progress-spinner {
+    &.active {
+      cursor: not-allowed;
+  
+      .ui-button-icon-left {
+        display: none;
+      }
+      .ui-progress-spinner {
+        position: absolute;
+        top: 20%;
+        left: 2%;
+      }
+      @keyframes ui-progress-spinner-color {
+        100%,
+        0%,
+        40%,
+        66%,
+        80%,
+        90% {
+          stroke: whitesmoke;
+        }
+      }
+    }
+  }

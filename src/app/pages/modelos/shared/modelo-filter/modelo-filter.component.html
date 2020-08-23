@@ -1,0 +1,15 @@
+<form id="form" name="form" [formGroup]="form" (keydown)="onEnter($event)">
+    <div class="ui-g ui-fluid">
+        <div class="ui-md-4">
+            <component-select id="uf" label="UF" [options]="ufs"></component-select> 
+        </div>
+
+        <div class="ui-md-4">
+            <component-select id="tipoDocumento" label="Tipo de documento" [options]="tipos"></component-select>
+        </div>
+
+        <div class="ui-md-4">
+            <component-input-number id="ano" label="Ano" [maxlength]="4"></component-input-number>
+        </div>
+    </div>
+</form>
