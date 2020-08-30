@@ -6,17 +6,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { CoreModule } from './core/core.module';
 import { ObjectInterceptor } from './core/interceptors';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     CoreModule,
     HttpClientModule,
-    AppRoutingModule
+    ReactiveFormsModule,
   ],
   providers: [
     {

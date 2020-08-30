@@ -7,6 +7,8 @@ import { ModelosRoutingModule } from './modelos.routing.module';
 import { ModeloTableComponent } from './shared/modelo-table/modelo-table.component';
 import { SharedComponentsModule } from 'app/shared/components/components.module';
 import { ModeloFilterComponent } from './shared/modelo-filter/modelo-filter.component';
+import { ModeloNewComponent } from './modelo-new/modelo-new.component';
+import { ModeloFormComponent } from './shared/modelo-form/modelo-form-component';
 
 @NgModule({
     imports: [
@@ -17,6 +19,8 @@ import { ModeloFilterComponent } from './shared/modelo-filter/modelo-filter.comp
         TableModule,
     ],
     declarations: [
+        ModeloFormComponent,
+        ModeloNewComponent,
         ModeloListComponent,
         ModeloTableComponent,
         ModeloFilterComponent,

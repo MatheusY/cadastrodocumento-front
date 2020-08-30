@@ -1,3 +1,7 @@
+.right {
+    float: right;
+}
+
 .botao-filtro {
     clear: left;
     margin-right: 10px;
@@ -9,24 +13,60 @@
     margin-right: 10px;
 }
 
+#cancel {
+    margin-right: 10px;
+}
+
 .listagem {
-    margin-left: 10%;
+    margin-top: 3%;
 }
 
 .filtro {
     border-width: 1px;
     border-style: solid;
+    border-radius: 25px;
     border-color: darkgray;
-    margin-right: 5%;
-    margin-left: 5%;
     padding-bottom: 10px;
-    width: 90%;
+    margin-top: 1%;
 }
 
 .filtro::after {
     content: "";
     display: table;
     clear: both;
+}
+
+.adicionar {
+    margin-left: 92%;
+}
+
+.content {
+    width: 90%;
+    margin-left: 5%;
+    display: block;
+}
+
+.dropzone {
+    text-align: center;
+    margin: 0 auto;
+    border-style: dotted;
+}
+
+.dropzone input {
+    opacity: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.dropzone h3 {
+    font-size: 20px;
+}
+
+.img-upload {
+    max-width: 100%;
 }
 
 /* You can add global styles to this file, and also import other style files */

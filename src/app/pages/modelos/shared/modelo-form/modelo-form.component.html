@@ -1,0 +1,18 @@
+<form id="form" name="form" [formGroup]="form">
+    <div class="ui-g-6 dropzone" appDnd (click)="fileField.click()" (fileDropped)="onFileDropped($event)">
+        <input type="file" #fileField id="fileField" (change)="onFileDropped($event.target.file)" />
+        <img class="img-upload" [src]="sanitize()">
+        <h3>Arraste uma imagem</h3>
+    </div>
+    <div class ="ui-g-6">
+        <div class="ui-g-12">
+            <component-select id="uf" label="UF" [options]="ufs"></component-select>
+        </div>
+        <div class="ui-g-12">
+            <component-select id="tipoDocumento" label="Tipo de documento" [options]="tiposDocumentos"></component-select>
+        </div>
+        <div class="ui-g-12">
+            <component-input-number id="ano" label="Ano" maxlength="4"></component-input-number>
+        </div>
+    </div> 
+</form>

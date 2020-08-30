@@ -1,3 +1,7 @@
+<div class="adicionar">
+    <component-button id="add" theme="add" (click)="onAdd($event)"></component-button>
+</div>
+
 <div class="filtro">
     <div class="ui-g-12">
         <modelo-filter [ufs]="ufs$ | async" [tipos]="tiposDocumentos$ | async" (enter)="onSearch($event)" #filterForm></modelo-filter>
@@ -7,6 +11,6 @@
         <component-button id="search" theme="search" (click)="onSearch($event)" ></component-button>
     </div>
 </div>
-<div class="ui-g-10 listagem">
+<div class="listagem">
     <modelo-table id="tableModelos" [dataSource]="dataSource" (pageChange)="onPageChanged($event)"></modelo-table>
 </div>

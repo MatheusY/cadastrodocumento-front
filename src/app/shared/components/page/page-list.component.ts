@@ -62,6 +62,10 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
         this.search();
     }
 
+    onAdd(event: Event): void {
+        this.navigateToForm(['..', 'adicionar']);
+    }
+
     onReset(even?: any): void {
         this.filterForm.form.reset();
         this.dataSource.clear();
@@ -81,6 +85,19 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
         let params = this.filterForm ? this.filterForm.form.value : {};
         this.filterForm.form.value;
         return pickBy(params, identity);
+    }
+
+    private navigateToForm(commands: any[]): void {
+        this.router.navigate(commands, {
+            relativeTo: this.activatedRoute,
+            state: {
+                queryParams: {
+                    ...this.searchParams,
+                    page: this.pageable.pageNumber,
+                    size: this.pageable.pageSize,
+                }
+            }
+        })
     }
 
     private search(): void {

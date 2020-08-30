@@ -1,10 +1,11 @@
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, take, map } from 'rxjs/operators';
 import { AbstractModel, PageImpl } from 'app/shared/components/models';
 import { Page } from 'app/shared/types/page.type';
 import { environment } from 'environments/environment';
+import { EventEmitter } from 'protractor';
 
 const prepareQueryRequest = (httpParams: HttpParams): HttpParams => {
     if(httpParams){
@@ -46,6 +47,32 @@ export const listAll = <E extends AbstractModel<ID>, ID>(http: HttpClient, endpo
     };
 
 
+export const create = <E extends AbstractModel<ID>, ID>(
+    http: HttpClient,
+    endPoint: string,
+    model: E,
+    ): Observable<number> => {
+        const headers = new HttpHeaders({
+            'Content-type': 'application/json; charset=utf-8'
+        });
+
+        return http.post<number>(endPoint, model, { headers });
+    };
+
+export const update = <E extends AbstractModel<ID>, ID>(
+    http: HttpClient,
+    endpoint: string,
+    model: E,
+    ):Observable<number> => {
+        const headers = new HttpHeaders({
+            'Content-type': 'application/json; charset=utf-8'
+        });
+
+        let url = model.id ? `${endpoint}/${model.id}` : endpoint;
+        
+        return http.put<number>(url, model, { headers });
+    }
+
 
 export abstract class AbstractService<E extends AbstractModel<ID>, ID> implements Resolve<E> {
     static baseUrl:string = environment.ApiUrl;
@@ -62,7 +89,19 @@ export abstract class AbstractService<E extends AbstractModel<ID>, ID> implement
 
     listAll(): Observable<E[]> {
         return listAll(this.http, `${this.endpoint}/all`);
-      }
+    }
+
+    save(model: E): Observable<number> {
+        return model.id ? this.update(model) : this.insert(model);
+    }
+
+    insert(model: E): Observable<number> {
+        return create(this.http, this.endpoint, model);
+    }
+
+    update(model: E): Observable<number> {
+        return update(this.http, this.endpoint, model);
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<E>  {
         const id: any = route.paramMap.get('id');
