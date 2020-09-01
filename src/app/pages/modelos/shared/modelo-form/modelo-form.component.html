@@ -1,6 +1,6 @@
 <form id="form" name="form" [formGroup]="form">
     <div class="ui-g-6 dropzone" appDnd (click)="fileField.click()" (fileDropped)="onFileDropped($event)">
-        <input type="file" #fileField id="fileField" (change)="onFileDropped($event.target.file)" />
+        <input type="file" #fileField id="fileField" (change)="onFileDropped($event.target.files[0])" />
         <img class="img-upload" [src]="sanitize()">
         <h3>Arraste uma imagem</h3>
     </div>
