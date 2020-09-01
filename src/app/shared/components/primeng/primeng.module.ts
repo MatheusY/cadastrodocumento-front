@@ -4,6 +4,7 @@ import { CustomSelectModule } from './select/select.module';
 import { CustomLabelModule } from './label/label.module';
 import { CustomInputModule } from './input/input.module';
 import { CustomButtonModule } from './button/button.module';
+import { CustomToastModule } from './toast/toast.module';
 
 const MS_PRIMENG_COMPONENTS_MODULES = [
     CustomButtonModule,
@@ -11,6 +12,7 @@ const MS_PRIMENG_COMPONENTS_MODULES = [
     CustomLabelModule,
     CustomSelectModule,
     CustomTableModule,
+    CustomToastModule,
 ]
 
 @NgModule({

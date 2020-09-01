@@ -22,7 +22,7 @@ export abstract class CustomInputComponent {
     @Input()
     set id(id: string){
         this._id = id;
-        this._formControlName = id;
+        this._formControlName = camelCase(id);
     }
 
     get id(): string {

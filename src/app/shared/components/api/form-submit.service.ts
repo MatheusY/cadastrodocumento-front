@@ -1,10 +1,10 @@
-import { AbstractModel } from '../models';
-import { Observable, BehaviorSubject, Subject, of } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AbstractService } from 'app/core/services';
 import { FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 import { takeUntil, finalize } from 'rxjs/operators';
+import { Observable, BehaviorSubject, Subject, of } from 'rxjs';
+import { AbstractModel } from '../models';
+import { AbstractService, MessagesService } from 'app/core/services';
 
 export class FormSubmit<E extends AbstractModel<ID>, ID> {
     unscribeAll = new Subject<E>();
@@ -17,6 +17,7 @@ export class FormSubmit<E extends AbstractModel<ID>, ID> {
     constructor(
         protected router: Router,
         protected activatedRoute: ActivatedRoute,
+        protected messageService: MessagesService,
         protected service: AbstractService<E, ID>,
     ){}
 
@@ -89,8 +90,7 @@ export class FormSubmit<E extends AbstractModel<ID>, ID> {
                 (value: number) => {
                     if (next) {
                         next(value);
-                    } else {
-                        console.log("Salvo com sucesso!");
+                        this.messageService.success(MessagesService.CREATED_RECORD);
                     }
                 },
                 (response: HttpErrorResponse) => {
@@ -100,9 +100,9 @@ export class FormSubmit<E extends AbstractModel<ID>, ID> {
                         this.setFieldErrors(form, response);
 
                         if (this.hasFieldErrors(response)) {
-                            console.log("Erro no formulário");
+                            this.messageService.error(MessagesService.INVALID_FORM);
                         } else {
-                            console.log("Erro de requisição")
+                            this.messageService.error(response.error.message);
                         }
                     }
                 }

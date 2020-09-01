@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { PageNewComponent } from 'app/shared/components/page';
 import { Modelo, Uf, TipoDocumento } from 'app/shared/components/models';
-import { ModelosService, UfsService, TiposDocumentosService, ImagensService } from 'app/core/services';
+import { ModelosService, UfsService, TiposDocumentosService, ImagensService, MessagesService } from 'app/core/services';
 
 @Component({
     selector: 'modelo-new',
@@ -18,12 +18,13 @@ export class ModeloNewComponent extends PageNewComponent<Modelo, number> {
     constructor(
         protected router: Router,
         protected activatedRoute: ActivatedRoute,
+        protected messagesService: MessagesService,
         protected modelosService: ModelosService,
         private ufService: UfsService,
         private tipoDocumentoService: TiposDocumentosService,
         private imagensService: ImagensService,
     ){
-        super(router, activatedRoute, modelosService);
+        super(router, activatedRoute, messagesService, modelosService);
         this.ufs$ = this.ufService.listAll();
         this.tiposDocumentos$ = this.tipoDocumentoService.listAll();
     }

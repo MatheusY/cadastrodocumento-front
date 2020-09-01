@@ -32,7 +32,6 @@ export class ModeloFormComponent {
         const reader = new FileReader();
         reader.readAsDataURL(event);
         reader.onload = () => this._url = reader.result;
-        //this._url = URL.createObjectURL(file);
         this.form.get('documento').setValue(event);
     }
 

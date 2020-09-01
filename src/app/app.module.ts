@@ -7,6 +7,10 @@ import { AppRoutingModule } from './app.routing.module';
 import { CoreModule } from './core/core.module';
 import { ObjectInterceptor } from './core/interceptors';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MessagesService } from './core/services';
+import { CustomToastService } from 'app/shared/components/primeng/toast/toast.service';
+import { SharedComponentsModule } from './shared/components/components.module';
+
 
 @NgModule({
   declarations: [
@@ -18,12 +22,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SharedComponentsModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ObjectInterceptor,
       multi: true
+    },
+    {
+      provide: MessagesService,
+      useExisting: CustomToastService,
     }
   ],
   bootstrap: [AppComponent]
