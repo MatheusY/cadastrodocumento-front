@@ -4,14 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/primeng';
 import { CustomSelectComponent } from './select.component';
 import { CustomLabelModule } from '../label/label.module';
+import { CustomErrorModule } from '../error/error.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+        CustomErrorModule,
         CustomLabelModule,
         DropdownModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     declarations: [CustomSelectComponent],
     exports: [CustomSelectComponent],

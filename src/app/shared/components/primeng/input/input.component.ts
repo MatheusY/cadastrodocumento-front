@@ -1,8 +1,9 @@
-import { HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { HostBinding, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { AbstractControl, ControlContainer } from '@angular/forms';
 import camelCase from 'lodash/camelCase';
 
-export abstract class CustomInputComponent {
+export abstract class CustomInputComponent implements OnInit {
+
     @HostBinding('class') hostClass = 'pcol';
 
     @Input() name = '';
@@ -18,6 +19,20 @@ export abstract class CustomInputComponent {
 
     private _id: string;
     private _formControlName: string;
+
+    constructor(protected controlContainer: ControlContainer) {}
+
+    ngOnInit(): void {
+        if (this.controlContainer){
+            if (this.formControlName) {
+                this.control = this.controlContainer.control.get(this.formControlName);
+            }
+        }
+
+        if (this.value && !this.model){
+            this.model = this.value;
+        }
+    }
 
     @Input()
     set id(id: string){

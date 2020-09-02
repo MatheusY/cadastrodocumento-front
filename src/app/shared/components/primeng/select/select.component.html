@@ -1,4 +1,4 @@
-<component-label [id]="id + '--label'" [target]="id + '--input'" [value]="label" [required]="control?.errors?.empty"></component-label>
+<component-label [id]="id + '--label'" [target]="id + '--input'" [value]="label" [required]="control?.errors?.required"></component-label>
 
 <p-dropdown
     [inputId]="id + '--input'"
@@ -11,3 +11,5 @@
     [optionLabel]="optionLabel"
     (onChange)="onChange($event)">
 </p-dropdown>
+
+<custom-error [id]="id + '--error'" [control]="control"></custom-error>

@@ -5,9 +5,11 @@ import { CustomLabelModule } from './label/label.module';
 import { CustomInputModule } from './input/input.module';
 import { CustomButtonModule } from './button/button.module';
 import { CustomToastModule } from './toast/toast.module';
+import { CustomErrorModule } from './error/error.module';
 
 const MS_PRIMENG_COMPONENTS_MODULES = [
     CustomButtonModule,
+    CustomErrorModule,
     CustomInputModule,
     CustomLabelModule,
     CustomSelectModule,

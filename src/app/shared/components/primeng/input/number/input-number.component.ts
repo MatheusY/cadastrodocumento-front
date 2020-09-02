@@ -27,4 +27,8 @@ export class CustomInputNumberComponent extends CustomInputComponent {
 
     @Output() focus = new EventEmitter<any>();
 
+    constructor(protected controlContainer: ControlContainer){
+      super(controlContainer);
+    }
+
 }
