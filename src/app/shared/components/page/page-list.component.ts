@@ -1,20 +1,22 @@
-import { ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { ViewChild, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 import pickBy from 'lodash/pickBy';
 import identity from 'lodash/identity';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { MsTableDataSource } from '../table/table.data-source';
 import { AbstractModel, Pageable } from 'app/shared/components/models';
 import { AbstractService } from 'app/core/services';
 
-export abstract class PageListComponent<E extends AbstractModel<ID>, ID> implements AfterViewInit, OnInit {
+export abstract class PageListComponent<E extends AbstractModel<ID>, ID> implements AfterViewInit, OnInit, OnDestroy {
     @ViewChild('filterForm', { static: true }) filterForm: any;
 
     modelParent: any;
     modelParent$: Observable<any>;
     dataSource: MsTableDataSource<E, ID>;
+
+    protected unsubscribeAll = new Subject<any>();
 
     private pageable: Pageable;
     private queryParams: { [key: string]: any};
@@ -40,6 +42,15 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
                 this.filterForm.form.patchValue({
                     ...this.queryParams
                 })
+            } else if (this.activatedRoute.snapshot.queryParamMap) {
+                const { page, size } = this.activatedRoute.snapshot.queryParams;
+
+                this.pageable = new Pageable(page, size);
+                if (this.filterForm) {
+                    this.filterForm.form.patchValue({
+                        ...this.activatedRoute.snapshot.queryParams,
+                    });
+                }
             }
     
             this.search();
@@ -57,6 +68,11 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
         }
     }
 
+    ngOnDestroy(): void {
+        this.unsubscribeAll.next();
+        this.unsubscribeAll.complete();
+    }
+
     onPageChanged(pageable: Pageable): void {
         this.pageable = pageable;
         this.search();
@@ -65,6 +81,10 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
     onAdd(event: Event): void {
         this.navigateToForm(['..', 'adicionar']);
     }
+
+    onRefresh(): void {
+        this.search();
+      }
 
     onReset(even?: any): void {
         this.filterForm.form.reset();

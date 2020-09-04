@@ -31,5 +31,10 @@ export class TableComponent<E extends AbstractModel<ID>, ID> implements AfterCon
         this.pageChanged.emit(new Pageable(pageNumber, event.rows));
     }
 
+    get first(): number {
+        const { pageNumber, pageSize } = this.dataSource.pageable;
+        return (pageNumber - 1) * pageSize;
+    }
+
 
 }
