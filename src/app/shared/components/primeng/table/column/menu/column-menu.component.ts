@@ -18,6 +18,7 @@ export class TableColumnMenuComponent<E> implements OnInit {
     
     items: MenuItem[];
     row: E;
+    confirmDelete: boolean;
 
     ngOnInit(): void {
         this.items = [
@@ -27,6 +28,13 @@ export class TableColumnMenuComponent<E> implements OnInit {
                 icon: 'pi pi-pencil', 
                 visible: this.showEdit(), 
                 command: () => this.onEdit(),
+            },
+            {
+                id: 'remover',
+                label: 'Remover',
+                icon: 'pi pi-times',
+                visible: this.showRemove(),
+                command: () => this.onRemove(),
             }
         ]
     }
@@ -39,11 +47,24 @@ export class TableColumnMenuComponent<E> implements OnInit {
         this.edit.emit(this.row);
     }
 
+    onRemove(): void {
+        this.confirmDelete = true;
+    }
+
     showEdit(): boolean {
         return this.edit.observers.length > 0;
     }
 
     showRemove(): boolean {
         return this.remove.observers.length > 0;
+    }
+
+    onNoDelete(): void {
+        this.confirmDelete = false;
+    }
+
+    onYesDelete(): void {
+        this.confirmDelete = false;
+        this.remove.emit(this.row);
     }
 }

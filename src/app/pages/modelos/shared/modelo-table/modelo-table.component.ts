@@ -10,6 +10,7 @@ export class ModeloTableComponent {
     @Input() dataSource: MsTableDataSource<Modelo, number>;
 
     @Output() edit = new EventEmitter<Modelo>();
+    @Output() remove = new EventEmitter<Modelo>();
     @Output() pageChanged = new EventEmitter<Pageable>();
 
     onPageChanged(pageable: Pageable): void {
@@ -18,5 +19,9 @@ export class ModeloTableComponent {
 
     onEdit(data: Modelo): void {
         this.edit.emit(data);
+    }
+
+    onRemove(data: Modelo): void {
+        this.remove.emit(data);
     }
 }

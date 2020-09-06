@@ -1,0 +1,10 @@
+<p-dialog [visible]="visible" [modal]="true" [closable]="false" appendTo="body" [style]="{'text-align': 'center'}">
+    <span [ngClass]="[options.icon.fontIcon, options.icon.color]" style="font-size: 3em"></span>
+    <p class="py-12">{{options.description}}</p>
+    <strong>{{options.question}}</strong>
+
+    <p-footer>
+        <component-button id="no" [theme]="themeNo" (click)="onNo($event)"></component-button>
+        <component-button id="yes" [theme]="themeYes" (click)="onYes($event)"></component-button>
+    </p-footer>
+</p-dialog>

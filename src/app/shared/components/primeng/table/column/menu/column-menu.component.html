@@ -1,3 +1,12 @@
 <ng-template #columnMenuTemplate let-row>
     <p-splitButton icon="pi pi-list" appendTo="body" [model]="items" (onDropdownClick)="onDropdownClick(row)"></p-splitButton>
 </ng-template>
+
+<component-confirm-dialog
+    *ngIf="showRemove()"
+    id="confirm-delete"
+    theme="delete"
+    [visible]="confirmDelete"
+    (no)="onNoDelete($event)"
+    (yes)="onYesDelete($event)">
+</component-confirm-dialog>

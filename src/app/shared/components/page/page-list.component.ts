@@ -1,13 +1,14 @@
 import { ViewChild, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
-import { HttpParams } from '@angular/common/http';
+import { HttpParams, HttpErrorResponse } from '@angular/common/http';
 import pickBy from 'lodash/pickBy';
 import identity from 'lodash/identity';
 
 import { Observable, of, Subject } from 'rxjs';
 import { MsTableDataSource } from '../table/table.data-source';
 import { AbstractModel, Pageable } from 'app/shared/components/models';
-import { AbstractService } from 'app/core/services';
+import { AbstractService, MessagesService } from 'app/core/services';
+import { takeUntil } from 'rxjs/operators';
 
 export abstract class PageListComponent<E extends AbstractModel<ID>, ID> implements AfterViewInit, OnInit, OnDestroy {
     @ViewChild('filterForm', { static: true }) filterForm: any;
@@ -24,6 +25,7 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
     constructor(
         protected router: Router,
         protected activatedRoute: ActivatedRoute,
+        protected messagesService: MessagesService,
         protected serviceImpl: AbstractService<E, ID>,
     ){
         this.dataSource = new MsTableDataSource(serviceImpl);
@@ -84,6 +86,21 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
 
     onEdit(model: E): void {
         this.navigateToForm(['..', model.id, 'editar']);
+    }
+
+    onRemove(model: E): void {
+        this.serviceImpl
+            .delete(model.id)
+            .pipe(takeUntil(this.unsubscribeAll))
+            .subscribe(
+                () => {
+                    this.messagesService.success(MessagesService.DELETED_RECORD);
+                    this.search();
+                },
+                (response: HttpErrorResponse) => {
+                    this.messagesService.error(response.error.message);
+                },
+            );
     }
 
     onRefresh(): void {

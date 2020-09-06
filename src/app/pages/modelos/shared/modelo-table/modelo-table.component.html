@@ -2,5 +2,5 @@
     <component-column-text id="tipoDocumento" header="Documento" property="tipoDocumento.nome"></component-column-text>
     <component-column-text id="uf" header="UF" property="uf.nome"></component-column-text>
     <component-column-text id="ano" header="Ano" property="ano"></component-column-text>
-    <component-column-menu id="acoes" header="Ações" (edit)="onEdit($event)"></component-column-menu>
+    <component-column-menu id="acoes" header="Ações" (edit)="onEdit($event)" (remove)="onRemove($event)"></component-column-menu>
 </component-table>

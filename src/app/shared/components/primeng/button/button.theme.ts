@@ -1,4 +1,5 @@
 import { ButtonOptions } from '../../interfaces';
+import { CustomButtonModule } from './button.module';
 
 export class CustomButtonThemes {
     static ADD: ButtonOptions = {
@@ -16,6 +17,22 @@ export class CustomButtonThemes {
         active: false,
 
     }
+
+    static DELETE: ButtonOptions = {
+        type: 'button',
+        text: 'Confirmar exclusão',
+        icon: { fontIcon: null, position: 'left' },
+        styleClass: 'ui-button-danger ml-8',
+        active: false,
+    };
+
+    static NO: ButtonOptions = {
+        type: 'button',
+        text: 'Não',
+        icon: { fontIcon: null, position: 'left' },
+        styleClass: 'ui-button-secondary ml-8',
+        active: false,
+    };
 
     static RESET: ButtonOptions = {
         type: 'button',
@@ -43,12 +60,23 @@ export class CustomButtonThemes {
         loadingType: 'spinner',
     };
 
+    static YES: ButtonOptions = {
+        type: 'button',
+        text: 'Sim',
+        icon: { fontIcon: null, position: 'left' },
+        styleClass: 'primary-button ml-8',
+        active: false,
+      };
+
     private static names = {
         add: CustomButtonThemes.ADD,
         cancel: CustomButtonThemes.CANCEL,
+        delete: CustomButtonThemes.DELETE,
+        no: CustomButtonThemes.NO,
         reset: CustomButtonThemes.RESET,
         save: CustomButtonThemes.SAVE,
         search: CustomButtonThemes.SEARCH,
+        yes: CustomButtonThemes.YES,
         
     }
 

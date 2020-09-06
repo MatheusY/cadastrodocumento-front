@@ -6,6 +6,7 @@ import { AbstractModel, PageImpl } from 'app/shared/components/models';
 import { Page } from 'app/shared/types/page.type';
 import { environment } from 'environments/environment';
 import { EventEmitter } from 'protractor';
+import { destroyPlatform } from '@angular/core';
 
 const prepareQueryRequest = (httpParams: HttpParams): HttpParams => {
     if(httpParams){
@@ -71,7 +72,12 @@ export const update = <E extends AbstractModel<ID>, ID>(
         let url = model.id ? `${endpoint}/${model.id}` : endpoint;
         
         return http.put<number>(url, model, { headers });
-    }
+    };
+
+export const destroy = <ID>(http: HttpClient, endPoint: string, id: ID): Observable<void> => {
+    let url = `${endPoint}/${id}`;
+    return http.delete<void>(url);
+};
 
 
 export abstract class AbstractService<E extends AbstractModel<ID>, ID> implements Resolve<E> {
@@ -101,6 +107,10 @@ export abstract class AbstractService<E extends AbstractModel<ID>, ID> implement
 
     update(model: E): Observable<number> {
         return update(this.http, this.endpoint, model);
+    }
+
+    delete(id: ID): Observable<void> {
+        return destroy(this.http, this.endpoint, id);
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<E>  {
