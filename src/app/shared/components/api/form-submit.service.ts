@@ -74,6 +74,16 @@ export class FormSubmit<E extends AbstractModel<ID>, ID> {
         return this.save(this.prepare(form), form, next, error);
     }
 
+    update(form: FormGroup, next?: (value: number) => void, error?: (response: HttpErrorResponse) => void): void {
+        if (!this.validate(form)){
+            return;
+        }
+
+        this.loadingSubject.next(true);
+
+        return this.save(this.prepare(form, this.model.id), form, next, error);
+    }
+
     save(
         model: E,
         form: FormGroup,

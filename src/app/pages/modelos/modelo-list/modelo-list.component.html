@@ -12,5 +12,5 @@
     </div>
 </div>
 <div class="listagem">
-    <modelo-table id="tableModelos" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)"></modelo-table>
+    <modelo-table id="tableModelos" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)" (edit)="onEdit($event)"></modelo-table>
 </div>

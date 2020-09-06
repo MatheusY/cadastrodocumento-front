@@ -82,6 +82,10 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
         this.navigateToForm(['..', 'adicionar']);
     }
 
+    onEdit(model: E): void {
+        this.navigateToForm(['..', model.id, 'editar']);
+    }
+
     onRefresh(): void {
         this.search();
       }

@@ -2,6 +2,7 @@ import { AbstractModel, Pageable } from 'app/shared/components/models';
 import { AfterContentInit, Component, ViewEncapsulation, ContentChild, QueryList, Input, Output, EventEmitter, ContentChildren } from '@angular/core';
 import { TableColumnComponent } from './column/column.component';
 import { MsTableDataSource } from 'app/shared/components/table/table.data-source';
+import { TableColumnMenuComponent } from './column/menu/column-menu.component';
 
 @Component({
     selector: 'component-table',
@@ -10,6 +11,7 @@ import { MsTableDataSource } from 'app/shared/components/table/table.data-source
 })
 export class TableComponent<E extends AbstractModel<ID>, ID> implements AfterContentInit {
     @ContentChildren(TableColumnComponent, { descendants: true }) columns: QueryList<TableColumnComponent>;
+    @ContentChild(TableColumnMenuComponent, { static: true }) columnMenu: TableColumnMenuComponent<E>;
 
     @Input() id: string;
     @Input() title: string;

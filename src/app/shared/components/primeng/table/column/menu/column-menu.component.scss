@@ -1,0 +1,56 @@
+body .ui-splitbutton.ui-buttonset .ui-button {
+    border: 1px solid transparent;
+    background: transparent;
+    color:gray;
+  }
+  
+  body .ui-button:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0px;
+    box-shadow: none;
+  }
+
+  
+  // Click no box menu
+  button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only {
+    width: 25px !important;
+    position: absolute;
+    left: 0;
+  
+    :focus {
+      box-shadow: none;
+    }
+  }
+  
+  button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only span:before {
+    visibility: hidden;
+  }
+  
+  // ICONS
+  button.ui-button.ui-widget.ui-state-default.ui-corner-left.ui-button-icon-only {
+    width: 22px !important;
+  }
+  
+  button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only {
+    width: 12px;
+  }
+  
+  span.ui-button-icon-left.ui-clickable.pi.pi-chevron-down {
+    font-size: 12px;
+  }
+  
+  .ui-menu-list :nth-last-child(1) {
+    .ui-menuitem-text,
+    .ui-menuitem-icon {
+      color: #e91224;
+    }
+  
+    .ui-menuitem-link:hover {
+      background-color: #e91224;
+  
+      .ui-menuitem-text,
+      .ui-menuitem-icon {
+        color: white;
+      }
+    }
+  }

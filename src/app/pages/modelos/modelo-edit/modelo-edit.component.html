@@ -1,0 +1,14 @@
+<div>
+    <modelo-form
+        id="formulario"
+        [ufs]="ufs$ | async"
+        [tiposDocumentos]="tiposDocumentos$ | async"
+        [model]="model$ | async"
+        #modelForm>
+    </modelo-form>
+</div>
+
+<div class="ui-g-6">
+    <component-button id="cancel" theme="cancel" (click)="onCancel($event)"></component-button>
+    <component-button id="save" theme="save" (click)="onSave($event)" [loading]="loading$ | async"></component-button>
+</div>

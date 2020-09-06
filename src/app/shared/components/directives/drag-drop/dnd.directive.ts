@@ -22,6 +22,8 @@ export class DndDirective {
     @HostListener('dragleave', ['$event']) public onDragLeave(evt) {
         evt.preventDefault();
         evt.stopPropagation();
+        this.bordercolor = '#000000'
+        this.borderstyle = 'dotted';
     }
 
     @HostListener('drop', ['$event']) public onDrop(evt) {
@@ -37,4 +39,5 @@ export class DndDirective {
             this.fileDropped.emit(files[0]);
         }
     }
+
 }

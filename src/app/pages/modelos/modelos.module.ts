@@ -9,6 +9,7 @@ import { SharedComponentsModule } from 'app/shared/components/components.module'
 import { ModeloFilterComponent } from './shared/modelo-filter/modelo-filter.component';
 import { ModeloNewComponent } from './modelo-new/modelo-new.component';
 import { ModeloFormComponent } from './shared/modelo-form/modelo-form-component';
+import { ModeloEditComponent } from './modelo-edit/modelo-edit.component';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { ModeloFormComponent } from './shared/modelo-form/modelo-form-component'
         TableModule,
     ],
     declarations: [
+        ModeloEditComponent,
         ModeloFormComponent,
         ModeloNewComponent,
         ModeloListComponent,

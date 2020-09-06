@@ -14,12 +14,18 @@
     <ng-template pTemplate="header">
         <tr>
             <th *ngFor="let columnName of columnNames" scope="col">{{columnName}}</th>
+            <th *ngIf="columnMenu" scope="col" style="width: 100px;">
+                {{columnMenu.header}}
+            </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-row>
         <tr>
             <td *ngFor="let col of columns">
                 <ng-container *ngTemplateOutlet="col.template; context: {$implicit: row}"></ng-container>
+            </td>
+            <td *ngIf="columnMenu">
+                <ng-container *ngTemplateOutlet="columnMenu.template; context: {$implicit: row}"></ng-container>
             </td>
         </tr>
     </ng-template>

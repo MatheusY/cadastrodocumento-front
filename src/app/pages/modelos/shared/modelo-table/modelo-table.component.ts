@@ -9,9 +9,14 @@ import { Modelo, Pageable } from 'app/shared/components/models';
 export class ModeloTableComponent {
     @Input() dataSource: MsTableDataSource<Modelo, number>;
 
+    @Output() edit = new EventEmitter<Modelo>();
     @Output() pageChanged = new EventEmitter<Pageable>();
 
     onPageChanged(pageable: Pageable): void {
         this.pageChanged.emit(pageable);
+    }
+
+    onEdit(data: Modelo): void {
+        this.edit.emit(data);
     }
 }

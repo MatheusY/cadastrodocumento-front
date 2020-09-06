@@ -14,7 +14,9 @@ export class ImagensService {
     }
 
     create(arquivo: File, id: number): Observable<Object>{
-        return this.http.post(url + id, arquivo, {
+        const formData = new FormData();
+        formData.append('imagem', arquivo);
+        return this.http.post(url + id, formData, {
             reportProgress: true,
             observe: 'events'
         });
