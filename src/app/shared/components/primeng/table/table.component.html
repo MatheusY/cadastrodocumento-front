@@ -20,7 +20,7 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-row>
-        <tr>
+        <tr (dblclick)="onRowDblClick(row)">
             <td *ngFor="let col of columns">
                 <ng-container *ngTemplateOutlet="col.template; context: {$implicit: row}"></ng-container>
             </td>

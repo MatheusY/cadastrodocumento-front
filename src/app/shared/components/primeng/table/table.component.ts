@@ -19,6 +19,7 @@ export class TableComponent<E extends AbstractModel<ID>, ID> implements AfterCon
 
     @Output() selectedChanged = new EventEmitter<E[]>();
     @Output() pageChanged = new EventEmitter<Pageable>();
+    @Output() doubleClicked = new EventEmitter<E>();
 
     columnNames: string[] = [];
 
@@ -31,6 +32,10 @@ export class TableComponent<E extends AbstractModel<ID>, ID> implements AfterCon
     onPageChanged(event: any): void {
         const pageNumber = event.first / event.rows + 1;
         this.pageChanged.emit(new Pageable(pageNumber, event.rows));
+    }
+
+    onRowDblClick(data: E): void {
+        this.doubleClicked.emit(data);
     }
 
     get first(): number {

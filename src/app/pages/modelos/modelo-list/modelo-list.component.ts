@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { ModelosService, TiposDocumentosService, UfsService, MessagesService } from 'app/core/services';
 import { Modelo, Uf, TipoDocumento } from 'app/shared/components/models';
@@ -13,6 +13,8 @@ import { PageListComponent } from 'app/shared/components/page/page-list.componen
 export class ModeloListComponent extends PageListComponent<Modelo, number> implements OnInit {
 
     modelos: Observable<Modelo[]>;
+    displayImage = false;
+    urlImage: Observable<string>;
 
     ufs$: Observable<Uf[]>;
     tiposDocumentos$: Observable<TipoDocumento[]>
@@ -28,6 +30,13 @@ export class ModeloListComponent extends PageListComponent<Modelo, number> imple
         super(router, activatedRoute, messagesService, modeloService);
         this.ufs$ = ufService.listAll();
         this.tiposDocumentos$ = tipoDocumentoService.listAll();
+    }
+
+    onViewImage(data: Modelo){
+        this.modeloService.findById(data.id).subscribe(m => {
+            this.urlImage = of(m.documento);
+            this.displayImage = true;
+        });
     }
 
 }
