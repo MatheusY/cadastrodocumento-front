@@ -1,0 +1,13 @@
+<component-label *ngIf="label" [id]="id + '--label'" [target]="id + '--input'" [value]="label" [required]="control?.errors?.required"></component-label>
+
+<input
+    [id]="id + '--input'"
+    [type]="type"
+    [name]="name"
+    [formControlName]="formControlName"
+    (focus)=focus.emit($event)
+    (blur)="blur.emit($event)"
+    class="w-100-p"
+    pInputText />
+
+<custom-error [id]="id + '--error'" [control]="control"></custom-error>

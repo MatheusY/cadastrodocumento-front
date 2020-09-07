@@ -26,6 +26,15 @@ export class CustomButtonThemes {
         active: false,
     };
 
+    static LOGIN: ButtonOptions = {
+        type: 'button',
+        text: 'Login',
+        styleClass: 'primary-button',
+        active: false,
+        loadingText: 'Logando ...',
+        loadingType: 'spinner',
+    }
+
     static NO: ButtonOptions = {
         type: 'button',
         text: 'Não',
@@ -72,6 +81,7 @@ export class CustomButtonThemes {
         add: CustomButtonThemes.ADD,
         cancel: CustomButtonThemes.CANCEL,
         delete: CustomButtonThemes.DELETE,
+        login: CustomButtonThemes.LOGIN,
         no: CustomButtonThemes.NO,
         reset: CustomButtonThemes.RESET,
         save: CustomButtonThemes.SAVE,

@@ -7,6 +7,7 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing.module';
 import { VMessageModule } from '../shared/components/vmessage/vmessage.module';
 import {ButtonModule} from 'primeng/button';
+import { SharedComponentsModule } from 'app/shared/components/components.module';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import {ButtonModule} from 'primeng/button';
         ButtonModule,
         ReactiveFormsModule,
         RouterModule,
+        SharedComponentsModule,
         VMessageModule,
         HomeRoutingModule
     ]

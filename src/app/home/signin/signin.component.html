@@ -1,38 +1,12 @@
-<h4 class="text-center">Login</h4>
+<form [formGroup]="form" class="ui-g-12">
 
-<form [formGroup]="loginForm" class="form mt-4">
-
-    <div class="form-group">
-        <input #userNameInput
-            formControlName="usuario"
-            class="form-control"
-            placeholder="usuário"
-            autofocus>
-        <ap-vmessage
-            *ngIf="loginForm.get('usuario').errors?.required"
-            text="Usuário é obrigatório!">
-        </ap-vmessage>
+    <div class="field-login">
+        <component-input-text id="usuario" label="Usuário"></component-input-text>
+    </div>
+    <div class="field-login">
+        <component-input-password id="senha" label="Senha"></component-input-password>
     </div>
 
-    <div class="form-group">
-        <input
-            formControlName="senha"
-            type="password"
-            class="form-control"
-            placeholder="senha">
-        <ap-vmessage
-            *ngIf="loginForm.get('senha').errors?.required"
-            text="Senha é obrigatório!">
-        </ap-vmessage>
-    </div>
+    <component-button id="login" theme="login" (click)="login()"></component-button>
 
-    <button pButton
-        [disabled]="loginForm.invalid"
-        label="login"
-        type="button"
-        (click)="login()"
-        class="btn btn-primary btn-block">
-    </button>
-
-    <!-- <p-button label="Click" (onClick)="login($event)"></p-button> -->
 </form>

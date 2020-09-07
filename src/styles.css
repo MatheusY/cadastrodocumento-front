@@ -1,3 +1,14 @@
+.row {
+    margin-top: 10% !important;
+    margin-left: 20% !important;
+}
+
+.titulo {
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
 .right {
     float: right;
 }
