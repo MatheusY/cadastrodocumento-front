@@ -14,5 +14,6 @@
 <div class="listagem">
     <modelo-table id="tableModelos" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)" (edit)="onEdit($event)" (remove)="onRemove($event)" (viewImage)="onViewImage($event)"></modelo-table>
 </div>
-
-<component-image-dialog [(display)]="displayImage" [image]="urlImage | async"></component-image-dialog>
+<div *ngIf="displayImage">
+    <component-image-dialog [(display)]="displayImage" [image]="urlImage | async"></component-image-dialog>
+</div>

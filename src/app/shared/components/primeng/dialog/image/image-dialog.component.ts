@@ -8,7 +8,7 @@ const IMAGEM_PREFIX = 'data:application/octet-stream;base64,'
     templateUrl: './image-dialog.component.html',
     styleUrls: ['/image-dialog.component.scss']
 })
-export class CustomImageDialogComponent implements OnDestroy{
+export class CustomImageDialogComponent{
 
     @Output() displayChange = new EventEmitter<boolean>();
 
@@ -16,9 +16,6 @@ export class CustomImageDialogComponent implements OnDestroy{
     visible;
 
     constructor(private sanitizer: DomSanitizer){}
-    ngOnDestroy(): void {
-        console.log('Destruindo');
-    }
 
     @Input('image')
     set image(value: string) {
