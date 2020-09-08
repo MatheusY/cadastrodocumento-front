@@ -1,6 +1,20 @@
 .row {
     margin-top: 10% !important;
-    margin-left: 20% !important;
+    margin-left: 40% !important;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.background {
+    width: auto;
+    height: 100%;
+    overflow: auto;
+    background-image: url(/assets/img/home.jpg);
+    background-size: cover;
+
 }
 
 .titulo {
