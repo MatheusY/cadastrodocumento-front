@@ -10,7 +10,8 @@
     [first]="first"
     currentPageReportTemplate="{currentPage} de {totalPages}"
     [showCurrentPageReport]="false"
-    (onPage)="onPageChanged($event)">
+    (onPage)="onPageChanged($event)"
+    tableStyleClass="table-list">
     <ng-template pTemplate="header">
         <tr>
             <th *ngFor="let columnName of columnNames" scope="col">{{columnName}}</th>

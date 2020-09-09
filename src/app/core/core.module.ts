@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import {SidebarModule} from 'primeng/sidebar';
 import { AuthService } from './services';
+import { SharedComponentsModule } from 'app/shared/components/components.module';
 
 @NgModule({
     declarations:[
@@ -31,6 +32,7 @@ import { AuthService } from './services';
         MenuModule,
         ButtonModule,
         SidebarModule,
+        SharedComponentsModule,
     ],
     providers: [
         AuthService,

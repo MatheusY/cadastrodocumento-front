@@ -1,0 +1,23 @@
+.table-list thead,
+.table-list tbody,
+.table-list tbody tr,
+.table-list tbody td {
+    border: 2px solid black;
+}
+
+.table-list thead > tr > th {
+    background-color: #9DFCDF !important;
+}
+
+.ui-paginator,
+.ui-paginator .ui-dropdown .ui-dropdown-trigger,
+.ui-paginator .ui-dropdown .ui-dropdown-label {
+    font-weight: bold;
+    background-color: #9DFCDF !important;
+}
+
+.ui-paginator-bottom {
+    border-left: 2px solid black !important;
+    border-right: 2px solid black !important;
+    border-bottom: 2px solid black !important;
+}

@@ -7,6 +7,7 @@ import { TableColumnMenuComponent } from './column/menu/column-menu.component';
 @Component({
     selector: 'component-table',
     templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class TableComponent<E extends AbstractModel<ID>, ID> implements AfterContentInit {
