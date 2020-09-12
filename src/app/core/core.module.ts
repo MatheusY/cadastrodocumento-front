@@ -13,6 +13,7 @@ import { ButtonModule } from 'primeng/button';
 import {SidebarModule} from 'primeng/sidebar';
 import { AuthService } from './services';
 import { SharedComponentsModule } from 'app/shared/components/components.module';
+import { SplitButtonModule, MenubarModule } from 'primeng/primeng';
 
 @NgModule({
     declarations:[
@@ -29,10 +30,12 @@ import { SharedComponentsModule } from 'app/shared/components/components.module'
         RouterModule,
         AlertModule,
         LoadingModule,
+        MenubarModule,
         MenuModule,
         ButtonModule,
         SidebarModule,
         SharedComponentsModule,
+        SplitButtonModule,
     ],
     providers: [
         AuthService,

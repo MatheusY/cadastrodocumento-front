@@ -1,18 +1,20 @@
-body .ui-splitbutton.ui-buttonset .ui-button {
+body .menu-options .ui-button, 
+body .menu-options .ui-button:active,
+body .menu-options .ui-button:hover {
     border: 1px solid transparent;
     background: transparent;
     color:gray;
   }
   
-  body .ui-button:enabled:focus {
+  body .menu-options .ui-button:enabled:focus {
     outline: 0 none;
     outline-offset: 0px;
     box-shadow: none;
   }
 
   
-  // Click no box menu
-  button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only {
+  // // Click no box menu
+  .menu-options button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only {
     width: 25px !important;
     position: absolute;
     left: 0;
@@ -22,20 +24,20 @@ body .ui-splitbutton.ui-buttonset .ui-button {
     }
   }
   
-  button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only span:before {
+  .menu-options button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only span:before {
     visibility: hidden;
   }
   
-  // ICONS
-  button.ui-button.ui-widget.ui-state-default.ui-corner-left.ui-button-icon-only {
+  // // ICONS
+  .menu-options button.ui-button.ui-widget.ui-state-default.ui-corner-left.ui-button-icon-only {
     width: 22px !important;
   }
   
-  button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only {
+  .menu-options button.ui-splitbutton-menubutton.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only {
     width: 12px;
   }
   
-  span.ui-button-icon-left.ui-clickable.pi.pi-chevron-down {
+  .menu-options span.ui-button-icon-left.ui-clickable.pi.pi-chevron-down {
     font-size: 12px;
   }
   

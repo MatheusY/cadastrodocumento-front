@@ -34,8 +34,15 @@
                 <ap-alert></ap-alert>
             </div>
         </p-sidebar>
-        <div>
+        <div class="ui-g-10">
             <component-button id="header-button" styleClass="header-button" (click)="onClick()" icon="pi pi-bars"></component-button>
+        </div>
+
+        <!-- <div class="ui-g-1 usuario" #usuario>
+            <p-splitButton [label]="(user$ | async)?.usuario" appendTo="body" styleClass="split-user" icon="pi pi-user" [model]="items" ></p-splitButton>
+        </div> -->
+        <div >
+            <p-menubar [model]="items" styleClass="menu-bar"></p-menubar>
         </div>
     </header>
 </div>

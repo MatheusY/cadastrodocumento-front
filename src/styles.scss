@@ -94,4 +94,39 @@ html, body {
     max-width: 100%;
 }
 
+.menu-bar {
+    height: 50px;
+    margin-bottom: 1em;
+}
+
+body .ui-menubar .ui-menubar-root-list > .ui-menuitem > .ui-menuitem-link {
+    margin-top: 0.2em;
+    margin-left: 4em;
+}
+
+.menu-bar .ui-menuitem-link,
+.menu-bar .ui-menuitem-link:hover,
+.menu-bar .ui-menuitem-link:active{
+    font-size: medium;
+    background: transparent !important;
+    outline: none;
+}
+
+.ui-menubar .ui-menubar-root-list>.ui-menuitem>.ui-menuitem-link>.ui-submenu-icon {
+    visibility: hidden;
+}
+
+#logout span{
+    color: #e91224;
+}
+
+#logout:hover {
+    background-color: #e91224 !important;
+
+    span {
+        color: white;
+
+    }
+}
+
 /* You can add global styles to this file, and also import other style files */
