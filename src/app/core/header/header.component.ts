@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit{
     nomeUsuario: string;
 
     items: MenuItem[];
+    itemsMenu: MenuItem[];
 
     constructor(
         private userService: UserService,
@@ -29,6 +30,16 @@ export class HeaderComponent implements OnInit{
     }
 
     ngOnInit(): void {
+
+        this.itemsMenu = [
+            {
+                id: 'modelo',
+                label: 'Modelo',
+                command: () => this.redirecionar('modelo'),
+
+            }
+        ]
+
         this.user$.subscribe(u => {
             this.items = [
                 {
@@ -58,6 +69,11 @@ export class HeaderComponent implements OnInit{
     logout(){
         this.userService.logout();
         this.router.navigate(['']);
+    }
+
+    redirecionar(local: string) {
+        this.router.navigate([local]);
+        this.onClick();
     }
     
     onClick(){

@@ -6,14 +6,13 @@ import { RequestInterceptor } from './auth/request.interceptor';
 import { HeaderComponent } from './header/header.component'
 import { FooterComponent } from './footer/footer.component'
 import { AlertModule } from '../shared/components/alert/alert.module'
-import { MenuModule } from '../shared/components/menu/menu.module'
 import { LoadingModule } from '../shared/components/loading/loading.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenubarModule, MenuModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/button';
 import {SidebarModule} from 'primeng/sidebar';
 import { AuthService } from './services';
 import { SharedComponentsModule } from 'app/shared/components/components.module';
-import { SplitButtonModule, MenubarModule } from 'primeng/primeng';
 
 @NgModule({
     declarations:[
@@ -35,7 +34,6 @@ import { SplitButtonModule, MenubarModule } from 'primeng/primeng';
         ButtonModule,
         SidebarModule,
         SharedComponentsModule,
-        SplitButtonModule,
     ],
     providers: [
         AuthService,

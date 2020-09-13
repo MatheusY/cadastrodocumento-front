@@ -1,33 +1,12 @@
 <div *ngIf="(user$ | async) as user">
     <header class="fixed-top">
-        <p-sidebar [(visible)]="display" [baseZIndex]="10000">
-            <nav class="navbar navbar-light bg-white">
-                <ul class="list-unstyled">
-                        <ap-menu #menu>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a showIfLogged [routerLink]="['p', 'add']">Upload</a>
-                                </li>
-                            </ul>
-                        </ap-menu>
-                    <div *ngIf="(user$ | async) as user; else login">
-                        <!-- <i class="fa fa-user-circle mr-1"></i> -->
-                        <li>
-                            <a class="mr-3">{{ user.usuario }}</a>
-                        </li>
-
-                        <li>
-                            <a class="clickable" (click)="logout()">Sair</a>
-                        </li>
-                    </div>
-            
-                    <ng-template #login>
-                        <span class="navbar-text">
-                            <a [routerLink]="['']">Please, login!</a>
-                        </span>
-                    </ng-template>
-                </ul>
-            </nav>
+        <p-sidebar id="menu-sidebar" [(visible)]="display" [baseZIndex]="10000">
+            <div>
+                <h2 style="text-align: center;">Menu</h2>
+            </div>
+            <div class="left-menu">
+                <p-menu [model]="itemsMenu"></p-menu>
+            </div>
         
             <div class="fixed-top">
                 <ap-loading></ap-loading>
@@ -38,9 +17,6 @@
             <component-button id="header-button" styleClass="header-button" (click)="onClick()" icon="pi pi-bars"></component-button>
         </div>
 
-        <!-- <div class="ui-g-1 usuario" #usuario>
-            <p-splitButton [label]="(user$ | async)?.usuario" appendTo="body" styleClass="split-user" icon="pi pi-user" [model]="items" ></p-splitButton>
-        </div> -->
         <div >
             <p-menubar [model]="items" styleClass="menu-bar"></p-menubar>
         </div>
