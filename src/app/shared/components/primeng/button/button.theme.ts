@@ -13,7 +13,7 @@ export class CustomButtonThemes {
         type: 'button',
         text: 'Cancelar',
         icon: { fontIcon: 'pi pi-ban', position: 'left'},
-        styleClass: 'clean',
+        styleClass: 'cancel-button',
         active: false,
 
     }
