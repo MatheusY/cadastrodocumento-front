@@ -81,6 +81,6 @@ export class HeaderComponent implements OnInit{
     }
 
     onPerfil(){
-
+        this.router.navigate(['usuario', 'visualizar']);
     }
 }

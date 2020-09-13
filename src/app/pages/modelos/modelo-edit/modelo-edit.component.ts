@@ -6,7 +6,7 @@ import { Modelo, Uf, TipoDocumento } from 'app/shared/components/models';
 import { MessagesService, UfsService, TiposDocumentosService, ModelosService, ImagensService } from 'app/core/services';
 
 @Component({
-    selector: 'modelo-eidt',
+    selector: 'modelo-edit',
     templateUrl: './modelo-edit.component.html',
 })
 export class ModeloEditComponent extends PageEditComponent<Modelo, number>{

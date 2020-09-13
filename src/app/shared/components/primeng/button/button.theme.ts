@@ -26,6 +26,14 @@ export class CustomButtonThemes {
         active: false,
     };
 
+    static EDIT: ButtonOptions = {
+        type: 'button',
+        text: 'Editar',
+        icon: {fontIcon: 'pi pi-pencil', position: 'left'},
+        styleClass: 'primary-button',
+        active: false,
+    }
+
     static LOGIN: ButtonOptions = {
         type: 'button',
         text: 'Login',
@@ -81,6 +89,7 @@ export class CustomButtonThemes {
         add: CustomButtonThemes.ADD,
         cancel: CustomButtonThemes.CANCEL,
         delete: CustomButtonThemes.DELETE,
+        edit: CustomButtonThemes.EDIT,
         login: CustomButtonThemes.LOGIN,
         no: CustomButtonThemes.NO,
         reset: CustomButtonThemes.RESET,

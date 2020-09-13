@@ -1,0 +1,7 @@
+<usuario-form-view
+    id="formulario"
+    [model]="usuario$ | async">
+</usuario-form-view>
+<div class="ui-g-12" style="text-align: center;">
+    <component-button id="edit" theme="edit" (click)="onEdit($event)"></component-button>
+</div>

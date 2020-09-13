@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import {AuthGuard } from './core/auth/auth.guard'
 import { HomeModule } from './home/home.module'
 import { ModelosModule } from './pages/modelos/modelos.module'
+import { UsuariosModule } from './pages/usuarios/usuarios.module'
 
 const routes: Routes = [
 
@@ -13,6 +14,11 @@ const routes: Routes = [
     {
         path: 'modelo',
         loadChildren: () => import('./pages/modelos/modelos.module').then(m => ModelosModule),
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'usuario',
+        loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => UsuariosModule),
         canActivate: [AuthGuard]
     },
     {
