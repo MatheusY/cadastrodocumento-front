@@ -26,7 +26,8 @@ export class HeaderComponent implements OnInit{
         private userService: UserService,
         private router: Router
     ){
-        this.user$ = userService.getUser();
+        // this.user$ = userService.getUser();
+        this.user$ = userService.findUsuarioLogado();
     }
 
     ngOnInit(): void {
@@ -81,6 +82,6 @@ export class HeaderComponent implements OnInit{
     }
 
     onPerfil(){
-        this.router.navigate(['usuario', 'visualizar']);
+        this.user$.subscribe(u => this.router.navigate(['/', 'usuario', u.id, 'visualizar']));
     }
 }

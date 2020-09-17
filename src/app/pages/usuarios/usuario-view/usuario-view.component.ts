@@ -8,7 +8,7 @@ import { User } from 'app/shared/components/models';
     selector: 'usuario-view',
     templateUrl: './usuario-view.component.html',
 })
-export class UsuarioViewComponent implements OnInit{
+export class UsuarioViewComponent {
 
     usuario$: Observable<User>;
     
@@ -17,14 +17,21 @@ export class UsuarioViewComponent implements OnInit{
         protected activatedRoute: ActivatedRoute,
         protected messagesService: MessagesService,
         private userService: UserService,
-    ) {}
-
-    ngOnInit(): void {
-        this.usuario$ = this.userService.findUsuarioLogado();
+    ) {
+        this.activatedRoute.params.subscribe(param => this.usuario$ = userService.findById(param.id));
     }
 
     onEdit(event) {
-        
+            this.navigateToForm(['..', 'editar']);
+    }
+
+    private navigateToForm(commands: any[]): void {
+        this.router.navigate(commands, {
+            relativeTo: this.activatedRoute,
+            queryParams: {
+                'redirectUrl':  this.router.url
+            }
+        });
     }
 
 }

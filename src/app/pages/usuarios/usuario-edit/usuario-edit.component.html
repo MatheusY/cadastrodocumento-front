@@ -1,0 +1,12 @@
+<div>
+    <usuario-form
+        id="formulario"
+        [model]="model$ | async"
+        #modelForm>
+    </usuario-form>
+</div>
+
+<div class="ui-g-12 center">
+    <component-button id="cancel" theme="cancel" (click)="onCancel($event)"></component-button>
+    <component-button id="save" theme="save" (click)="onSave($event)" [loading]="loading$ | async"></component-button>
+</div>

@@ -6,14 +6,17 @@ import { TokenService } from '../token/token.service';
 import * as jtw_decode from 'jwt-decode';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
+import { AbstractService } from './abstract.service';
 
-const url = `${environment.ApiUrl}/usuario/`
+const url = `${environment.ApiUrl}/usuario`;
+
 @Injectable({ providedIn: 'root'})
-export class UserService {
+export class UserService extends AbstractService<User, number>{
     private userSubject = new BehaviorSubject<User> (null);
     private usuario: string;
 
-    constructor(private tokenService: TokenService, private http: HttpClient){
+    constructor(private tokenService: TokenService, protected http: HttpClient){
+        super(url, http);
         this.tokenService.hasToken() && this.decodeAndNotify();
     }
 
