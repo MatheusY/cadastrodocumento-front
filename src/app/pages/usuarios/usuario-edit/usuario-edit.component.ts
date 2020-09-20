@@ -1,7 +1,7 @@
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PageEditComponent } from 'app/shared/components/page/page-edit.component';
 import { User } from 'app/shared/components/models';
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { MessagesService, UserService } from 'app/core/services';
 
 @Component({
@@ -36,7 +36,13 @@ export class UsuarioEditComponent extends PageEditComponent<User, number>{
     }
 
     onSave(event: Event): void {
-        return this.update(this.modelForm.form, () => {
+        let value = this.modelForm.form.value;
+        const id =this.model.id
+        value = {...value, id}
+        this.usuarioService.updateUser(value).subscribe(token =>  {
+            if(token.token) {
+                this.usuarioService.setToken(token.token);
+            }
             this.retornaPagina();
             this.messageService.success(MessagesService.UPDATED_RECORD);
         });

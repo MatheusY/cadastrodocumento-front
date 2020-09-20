@@ -1,10 +1,9 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'app/shared/components/models';
 import { UserService } from 'app/core/services';
 import { MenuItem } from 'primeng/primeng';
-import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'ap-header',
@@ -26,12 +25,37 @@ export class HeaderComponent implements OnInit{
         private userService: UserService,
         private router: Router
     ){
-        // this.user$ = userService.getUser();
-        this.user$ = userService.findUsuarioLogado();
+        this.user$ = this.userService.findUsuarioLogado();
     }
 
     ngOnInit(): void {
-
+        this.userService.getUser().subscribe(() => {
+            this.user$ = this.userService.findUsuarioLogado();
+            this.user$.subscribe(u => {
+                this.items = [
+                    {
+                        id: 'usuario',
+                        label: u ? u.usuario : null,
+                        icon: 'pi pi-user',
+                        items: [
+                            {
+                                id: 'perfil',
+                                label: 'Perfil',
+                                icon: 'pi pi-pencil',
+                                command: () => this.onPerfil(),
+                            },
+                            {
+                                id: 'logout',
+                                label: 'Sair',
+                                icon: 'pi pi-sign-out',
+                                command: () => this.logout(),
+                            }
+                        ]
+                    },
+                ]
+    
+            });
+        });
         this.itemsMenu = [
             {
                 id: 'modelo',
@@ -41,30 +65,7 @@ export class HeaderComponent implements OnInit{
             }
         ]
 
-        this.user$.subscribe(u => {
-            this.items = [
-                {
-                    id: 'usuario',
-                    label: u ? u.usuario : null,
-                    icon: 'pi pi-user',
-                    items: [
-                        {
-                            id: 'perfil',
-                            label: 'Perfil',
-                            icon: 'pi pi-pencil',
-                            command: () => this.onPerfil(),
-                        },
-                        {
-                            id: 'logout',
-                            label: 'Sair',
-                            icon: 'pi pi-sign-out',
-                            command: () => this.logout(),
-                        }
-                    ]
-                },
-            ]
-
-        });
+        
     }
 
     logout(){
