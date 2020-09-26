@@ -22,6 +22,12 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'errors',
+        loadChildren: () => import('./pages/errors/errors.module').then(m => m.ErrorsModule),
+        canActivate: [],
+        data: { preload: true },
+    },
+    {
         path: '',
         pathMatch: 'full',
         redirectTo: 'home'

@@ -67,7 +67,6 @@ export class SenhaEditComponent extends FormSubmit<User, number>{
                         error(response);
                     } else {
                         this.setFieldErrors(form, response);
-
                         if (this.hasFieldErrors(response)) {
                             this.messageService.error(MessagesService.INVALID_FORM);
                         } else {

@@ -61,7 +61,8 @@ export class UserService extends AbstractService<User, number>{
     }
 
     findUsuarioLogado(): Observable<User> {
-        return this.http.get<User>(url);
+        const endpointUrl = `${url}/perfil`;
+        return this.http.get<User>(endpointUrl);
     }
 
     updateUser(model: User): Observable<Token> {
