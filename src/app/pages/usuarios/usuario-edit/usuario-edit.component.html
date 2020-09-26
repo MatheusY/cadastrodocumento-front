@@ -1,6 +1,7 @@
 <div>
     <usuario-form
         id="formulario"
+        [perfis]="perfis$ | async"
         [model]="model$ | async"
         #modelForm>
     </usuario-form>

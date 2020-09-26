@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PageEditComponent } from 'app/shared/components/page/page-edit.component';
-import { User } from 'app/shared/components/models';
-import { MessagesService, UserService } from 'app/core/services';
+import { User, Perfil } from 'app/shared/components/models';
+import { MessagesService, UserService, PerfissService } from 'app/core/services';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'usuario-edit',
@@ -12,13 +13,17 @@ import { MessagesService, UserService } from 'app/core/services';
 
 export class UsuarioEditComponent extends PageEditComponent<User, number>{
 
+    perfis$: Observable<Perfil[]>;
+
     constructor(
         protected router: Router,
         protected activatedRoute: ActivatedRoute,
         protected messageService: MessagesService,
         private usuarioService: UserService,
+        private perfilService: PerfissService,
     ){
         super(router, activatedRoute, messageService, usuarioService);
+        this.perfis$ = perfilService.listAll();
     }
 
     onCancel(){

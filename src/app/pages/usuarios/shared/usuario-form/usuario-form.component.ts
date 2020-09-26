@@ -1,6 +1,6 @@
-import { User } from 'app/shared/components/models';
 import { Input, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User, Perfil } from 'app/shared/components/models';
 
 @Component({
     selector: 'usuario-form',
@@ -10,8 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UsuarioFormComponent {
     
     form: FormGroup;
+    isAdmin = false;
 
     private _model: User;
+
+    @Input() perfis: Perfil[];
 
     constructor(public formBuilder: FormBuilder) {
         this.form = this.formBuilder.group({
@@ -29,10 +32,17 @@ export class UsuarioFormComponent {
             this.form.patchValue({
                 ...this._model,
             });
+            if(this._model.perfil.id === 1){
+                this.isAdmin = true;
+            } else {
+                this.isAdmin = false;
+            }
         }
     }
 
     get model(): User {
         return this._model;
     }
+
+
 }

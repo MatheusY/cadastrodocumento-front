@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MessagesService, UserService } from 'app/core/services';
 import { Observable } from 'rxjs';
-import { User } from 'app/shared/components/models';
+import { MessagesService, UserService, PerfissService } from 'app/core/services';
+import { User, Perfil } from 'app/shared/components/models';
 
 @Component({
     selector: 'usuario-view',

@@ -8,8 +8,13 @@
             <component-input-text id="email" label="Email"></component-input-text>
         </div>
         <div class="ui-g-12">
-            <label>Nível de acesso: </label>
-            <label class="usuario-dado">{{model?.perfil}}</label>
+            <div *ngIf="isAdmin;else view">
+                <component-select id="perfil" label="Nível de acesso" [options]="perfis" optionLabel="descricao"></component-select>
+            </div>
+            <ng-template #view>
+                <label>Nível de acesso: </label>
+                <label class="usuario-dado">{{model?.perfil.descricao}}</label>
+            </ng-template>
         </div>
     </form>
 </div>
