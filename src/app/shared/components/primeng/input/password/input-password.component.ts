@@ -6,6 +6,7 @@ import { CONTROL_CONTAINER_USE_FACTORY } from 'app/shared/constants';
 @Component({
     selector: 'component-input-password',
     templateUrl: './input-password.component.html',
+    styleUrls: ['./input-password.component.scss'],
     providers: [
         {
           provide: NG_VALUE_ACCESSOR,

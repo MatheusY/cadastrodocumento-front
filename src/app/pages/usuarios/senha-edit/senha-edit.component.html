@@ -1,0 +1,10 @@
+<div>
+    <senha-form
+        id="formulario"
+        #modelForm>
+    </senha-form>
+</div>
+
+<div class="ui-g-12 center">
+    <component-button id="save" theme="save" (click)="onSave($event)" [loading]="loading$ | async"></component-button>
+</div>

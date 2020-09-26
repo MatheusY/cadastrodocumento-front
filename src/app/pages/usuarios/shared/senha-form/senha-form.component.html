@@ -1,0 +1,16 @@
+<div class="senha-form">
+    <h1>Trocar senha</h1>
+    <form id="form" name="form" [formGroup]="form">
+        <div class="field-login">
+            <component-input-password id="senha" label="Senha atual"></component-input-password>
+        </div>
+
+        <div class="field-login">
+            <component-input-password id="nova-senha" label="Nova senha" feedback="true"></component-input-password>
+        </div>
+
+        <div class="field-login">
+            <component-input-password id="nova-senha-confirmacao" label="Digite novamente a senha"></component-input-password>
+        </div>
+    </form>
+</div>

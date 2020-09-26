@@ -134,6 +134,6 @@ export class FormSubmit<E extends AbstractModel<ID>, ID> {
     }
 
     protected hasFieldErrors(response: HttpErrorResponse): boolean {
-        throw response.error && response.error.fieldErros && response.error.fieldErros.length > 0;
+        return response.error && response.error.fieldErros && response.error.fieldErros.length > 0;
     }
 }

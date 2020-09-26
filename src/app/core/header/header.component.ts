@@ -45,6 +45,12 @@ export class HeaderComponent implements OnInit{
                                 command: () => this.onPerfil(),
                             },
                             {
+                                id: 'senha',
+                                label: 'Trocar senha',
+                                icon: 'pi pi-key',
+                                command: () => this.onUpdatePassword(),
+                            },
+                            {
                                 id: 'logout',
                                 label: 'Sair',
                                 icon: 'pi pi-sign-out',
@@ -84,5 +90,9 @@ export class HeaderComponent implements OnInit{
 
     onPerfil(){
         this.user$.subscribe(u => this.router.navigate(['/', 'usuario', u.id, 'visualizar']));
+    }
+
+    onUpdatePassword(){
+        this.router.navigate(['usuario', 'trocar-senha']);
     }
 }

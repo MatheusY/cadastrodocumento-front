@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsuarioViewComponent } from './usuario-view/usuario-view.component';
 import { UserService } from 'app/core/services';
 import { UsuarioEditComponent } from './usuario-edit/usuario-edit.component';
+import { SenhaEditComponent } from './senha-edit/senha-edit.component';
 
 const routes: Routes = [
     {
@@ -19,6 +20,10 @@ const routes: Routes = [
             model: UserService
         }
     },
+    {
+        path: 'trocar-senha',
+        component: SenhaEditComponent,
+    }
 ]
 
 @NgModule({

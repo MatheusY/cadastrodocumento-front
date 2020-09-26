@@ -72,4 +72,12 @@ export class UserService extends AbstractService<User, number>{
         return this.http.put<Token>(endpointUrl, model, { headers });
     }
 
+    updatePassword(model: User) {
+        const headers = new HttpHeaders({
+            'Content-type': 'application/json; charset=utf-8'
+        });
+        const endpointUrl = `${url}/trocar-senha`;
+        return this.http.patch(endpointUrl, model, { headers })
+    }
+
 }

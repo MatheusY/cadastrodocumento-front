@@ -7,6 +7,8 @@ import { UsuarioFormViewComponent } from './shared/usuario-form-view/usuario-for
 import { UsuariosRoutingModule } from './usuarios.routing.module';
 import { UsuarioFormComponent } from './shared/usuario-form/usuario-form.component';
 import { UsuarioEditComponent } from './usuario-edit/usuario-edit.component';
+import { SenhaEditComponent } from './senha-edit/senha-edit.component';
+import { SenhaFormComponent } from './shared/senha-form/senha-form.component';
 
 @NgModule({
     imports: [
@@ -16,6 +18,8 @@ import { UsuarioEditComponent } from './usuario-edit/usuario-edit.component';
         UsuariosRoutingModule,
     ],
     declarations: [
+        SenhaEditComponent,
+        SenhaFormComponent,
         UsuarioEditComponent,
         UsuarioFormComponent,
         UsuarioFormViewComponent,
