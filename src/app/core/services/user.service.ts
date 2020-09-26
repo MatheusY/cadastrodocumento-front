@@ -15,7 +15,9 @@ export class UserService extends AbstractService<User, number>{
     private userSubject = new BehaviorSubject<User> (null);
     private usuario: string;
 
-    constructor(private tokenService: TokenService, protected http: HttpClient){
+    constructor(
+        private tokenService: TokenService, 
+        protected http: HttpClient,){
         super(url, http);
         this.tokenService.hasToken() && this.decodeAndNotify();
     }
@@ -42,8 +44,17 @@ export class UserService extends AbstractService<User, number>{
     }
 
     isLogged() {
-        return this.tokenService.hasToken();
+        if(this.tokenService.hasToken()) {
+            const decodedToken = jtw_decode(this.tokenService.getToken());
+            const tempoAtual = (Math.floor((new Date).getTime() / 1000));
+            if(tempoAtual >= decodedToken.exp){
+                this.logout();
+            }
+            return true;
+        }
+        return false;
     }
+
 
     getUserName(){
         return this.usuario;
