@@ -1,0 +1,15 @@
+<form id="form" [formGroup]="form" (keydown)="onEnter($event)">
+    <div class="ui-g ui-fluid">
+        <div class="ui-md-4">
+            <component-input-text id="usuario" label="Usuário"></component-input-text>
+        </div>
+
+        <div class="ui-md-4">
+            <component-input-text id="email" label="Email"></component-input-text>
+        </div>
+
+        <div class="ui-md-4">
+            <component-select id="perfil" label="Perfil" [options]="perfis" optionLabel="descricao"></component-select>
+        </div>        
+    </div>
+</form>

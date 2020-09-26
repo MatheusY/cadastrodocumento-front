@@ -1,0 +1,6 @@
+<component-table id="datatable" title="Usuários cadastrados" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)" >
+    <component-column-text id="usuario" header="Usuario" property="usuario"></component-column-text>
+    <component-column-text id="email" header="Email" property="email"></component-column-text>
+    <component-column-text id="perfil" header="Perfil" property="perfil.descricao"></component-column-text>
+    <component-column-menu id="acoes" header="Ações" (edit)="onEdit($event)" ></component-column-menu>
+</component-table>

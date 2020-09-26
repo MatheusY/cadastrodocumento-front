@@ -1,0 +1,14 @@
+
+<div class="filtro">
+    <div class="ui-g-12">
+        <usuario-filter [perfis]="perfis$ | async" (enter)="onSearch($event)" #filterForm></usuario-filter>
+    </div>
+    <div class="botao-filtro">
+        <component-button id="reset" theme="reset" (click)="onReset($event)"></component-button>
+        <component-button id="search" theme="search" (click)="onSearch($event)" ></component-button>
+    </div>
+</div>
+
+<div class="listagem">
+    <usuario-table id="tableUsuarios" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)" (edit)="onEdit($event)"></usuario-table>
+</div>

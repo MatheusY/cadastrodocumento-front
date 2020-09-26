@@ -60,16 +60,21 @@ export class HeaderComponent implements OnInit{
                     },
                 ]
     
+                this.itemsMenu = [
+                    {
+                        id: 'modelo-menu',
+                        label: 'Modelo',
+                        command: () => this.redirecionar('modelo'),
+                    },
+                    {
+                        id: 'usuario-menu',
+                        label: 'Usuário',
+                        command: () => this.redirecionar('usuario'),
+                        visible: u ? u.perfil.id === 1 : false
+                    }
+                ]
             });
         });
-        this.itemsMenu = [
-            {
-                id: 'modelo',
-                label: 'Modelo',
-                command: () => this.redirecionar('modelo'),
-
-            }
-        ]
 
         
     }

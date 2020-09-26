@@ -9,6 +9,9 @@ import { UsuarioFormComponent } from './shared/usuario-form/usuario-form.compone
 import { UsuarioEditComponent } from './usuario-edit/usuario-edit.component';
 import { SenhaEditComponent } from './senha-edit/senha-edit.component';
 import { SenhaFormComponent } from './shared/senha-form/senha-form.component';
+import { UsuarioListComponent } from './usuario-list/usuario-list.component';
+import { UsuarioTableComponent } from './shared/usuario-table/usuario-table.component';
+import { UsuarioFilterComponent } from './shared/usuario-filter/usuario-filter.component';
 
 @NgModule({
     imports: [
@@ -21,8 +24,11 @@ import { SenhaFormComponent } from './shared/senha-form/senha-form.component';
         SenhaEditComponent,
         SenhaFormComponent,
         UsuarioEditComponent,
+        UsuarioListComponent,
+        UsuarioFilterComponent,
         UsuarioFormComponent,
         UsuarioFormViewComponent,
+        UsuarioTableComponent,
         UsuarioViewComponent,
     ]
 })

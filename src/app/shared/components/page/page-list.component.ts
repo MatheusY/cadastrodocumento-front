@@ -19,7 +19,7 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
 
     protected unsubscribeAll = new Subject<any>();
 
-    private pageable: Pageable;
+    protected pageable: Pageable;
     private queryParams: { [key: string]: any};
 
     constructor(

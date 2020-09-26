@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 export class UsuarioEditComponent extends PageEditComponent<User, number>{
 
     perfis$: Observable<Perfil[]>;
+    usuarioLogado$: Observable<User>;
 
     constructor(
         protected router: Router,
@@ -23,6 +24,7 @@ export class UsuarioEditComponent extends PageEditComponent<User, number>{
         private perfilService: PerfissService,
     ){
         super(router, activatedRoute, messageService, usuarioService);
+        this.usuarioLogado$ = this.usuarioService.findUsuarioLogado();
         this.perfis$ = perfilService.listAll();
     }
 

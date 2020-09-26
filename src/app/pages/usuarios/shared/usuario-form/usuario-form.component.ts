@@ -8,13 +8,13 @@ import { User, Perfil } from 'app/shared/components/models';
     styleUrls: ['./usuario-form.component.scss'],
 })
 export class UsuarioFormComponent {
+    @Input() perfis: Perfil[];
     
     form: FormGroup;
     isAdmin = false;
 
     private _model: User;
 
-    @Input() perfis: Perfil[];
 
     constructor(public formBuilder: FormBuilder) {
         this.form = this.formBuilder.group({
@@ -32,11 +32,15 @@ export class UsuarioFormComponent {
             this.form.patchValue({
                 ...this._model,
             });
-            if(this._model.perfil.id === 1){
-                this.isAdmin = true;
-            } else {
-                this.isAdmin = false;
-            }
+        }
+    }
+
+    @Input()
+    set usuarioLogado(value: User) {
+        if(value && value.perfil.id === 1){
+            this.isAdmin = true;
+        } else {
+            this.isAdmin = false;
         }
     }
 
