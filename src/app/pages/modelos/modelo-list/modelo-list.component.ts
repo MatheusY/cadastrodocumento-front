@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { ModelosService, TiposDocumentosService, UfsService, MessagesService } from 'app/core/services';
+import { ModelosService, TiposDocumentosService, UfsService, MessagesService, UserService } from 'app/core/services';
 import { Modelo, Uf, TipoDocumento } from 'app/shared/components/models';
 import { PageListComponent } from 'app/shared/components/page/page-list.component';
 
@@ -25,9 +25,10 @@ export class ModeloListComponent extends PageListComponent<Modelo, number> imple
         protected messagesService: MessagesService,
         protected modeloService: ModelosService,
         protected tipoDocumentoService: TiposDocumentosService,
-        protected ufService: UfsService
+        protected ufService: UfsService,
+        protected usuarioService: UserService,
     ){
-        super(router, activatedRoute, messagesService, modeloService);
+        super(router, activatedRoute, messagesService, modeloService, usuarioService);
         this.ufs$ = ufService.listAll();
         this.tiposDocumentos$ = tipoDocumentoService.listAll();
     }

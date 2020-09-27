@@ -1,7 +1,7 @@
 import { OnInit, Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService, MessagesService } from 'app/core/services';
+import { AuthService, MessagesService, UserService } from 'app/core/services';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { User } from 'app/shared/components/models';
 import { finalize, takeUntil } from 'rxjs/operators';
@@ -25,6 +25,7 @@ export class SignInComponent implements OnInit, OnDestroy{
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private messagesService: MessagesService,
+        private userService: UserService,
     ){}
 
     ngOnInit(): void {
@@ -57,7 +58,11 @@ export class SignInComponent implements OnInit, OnDestroy{
                 finalize(() => this.loadingSubject.next(false)),
             )
             .subscribe(
-                () =>  this.router.navigate(['modelo']),
+                () =>  this.userService.findUsuarioLogado().subscribe(u => {
+                        this.userService.setusuarioLogado(u);
+                        this.router.navigate(['modelo']); 
+                    }
+                ),
                 (response: HttpErrorResponse) => {
                     if(response.error){
                         const jsonResponse = JSON.parse(response.error);

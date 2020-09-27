@@ -15,7 +15,7 @@
     <ng-template pTemplate="header">
         <tr>
             <th *ngFor="let columnName of columnNames" scope="col">{{columnName}}</th>
-            <th *ngIf="columnMenu" scope="col" style="width: 100px;">
+            <th *ngIf="columnMenu && editor" scope="col" style="width: 100px;">
                 {{columnMenu.header}}
             </th>
         </tr>
@@ -25,7 +25,7 @@
             <td *ngFor="let col of columns">
                 <ng-container *ngTemplateOutlet="col.template; context: {$implicit: row}"></ng-container>
             </td>
-            <td *ngIf="columnMenu">
+            <td *ngIf="columnMenu && editor">
                 <ng-container *ngTemplateOutlet="columnMenu.template; context: {$implicit: row}"></ng-container>
             </td>
         </tr>

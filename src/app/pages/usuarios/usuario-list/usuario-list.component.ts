@@ -21,7 +21,7 @@ export class UsuarioListComponent extends PageListComponent<User, number> {
         protected usuarioService: UserService,
         private perfilService: PerfissService,
     ){
-        super(router, activatedRoute, messagesService, usuarioService);
+        super(router, activatedRoute, messagesService, usuarioService, usuarioService);
         this.perfis$ = perfilService.listAll();
     }
 

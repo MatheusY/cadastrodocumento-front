@@ -6,8 +6,8 @@ import identity from 'lodash/identity';
 
 import { Observable, of, Subject } from 'rxjs';
 import { MsTableDataSource } from '../table/table.data-source';
-import { AbstractModel, Pageable } from 'app/shared/components/models';
-import { AbstractService, MessagesService } from 'app/core/services';
+import { AbstractModel, Pageable, User } from 'app/shared/components/models';
+import { AbstractService, MessagesService, UserService } from 'app/core/services';
 import { takeUntil } from 'rxjs/operators';
 
 export abstract class PageListComponent<E extends AbstractModel<ID>, ID> implements AfterViewInit, OnInit, OnDestroy {
@@ -16,6 +16,7 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
     modelParent: any;
     modelParent$: Observable<any>;
     dataSource: MsTableDataSource<E, ID>;
+    editor: boolean;
 
     protected unsubscribeAll = new Subject<any>();
 
@@ -27,6 +28,7 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
         protected activatedRoute: ActivatedRoute,
         protected messagesService: MessagesService,
         protected serviceImpl: AbstractService<E, ID>,
+        protected usuarioService: UserService,
     ){
         this.dataSource = new MsTableDataSource(serviceImpl);
         this.pageable = new Pageable();
@@ -68,6 +70,7 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
                 }
             })
         }
+        this.editor = this.usuarioService.getUsuarioLogado() ? this.usuarioService.getUsuarioLogado().perfil.id !== 3 : false;
     }
 
     ngOnDestroy(): void {
@@ -121,6 +124,8 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
         this.pageable = new Pageable();
         this.search();
     }
+
+
 
     get searchParams(): {[param: string]: string} {
         let params = this.filterForm ? this.filterForm.form.value : {};

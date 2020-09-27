@@ -17,6 +17,7 @@ export class TableComponent<E extends AbstractModel<ID>, ID> implements AfterCon
     @Input() id: string;
     @Input() title: string;
     @Input() dataSource: MsTableDataSource<E, ID>;
+    @Input() editor = true;
 
     @Output() selectedChanged = new EventEmitter<E[]>();
     @Output() pageChanged = new EventEmitter<Pageable>();

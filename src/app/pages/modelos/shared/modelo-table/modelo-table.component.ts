@@ -8,6 +8,7 @@ import { Modelo, Pageable } from 'app/shared/components/models';
 })
 export class ModeloTableComponent {
     @Input() dataSource: MsTableDataSource<Modelo, number>;
+    @Input() editor = true;
 
     @Output() edit = new EventEmitter<Modelo>();
     @Output() remove = new EventEmitter<Modelo>();
