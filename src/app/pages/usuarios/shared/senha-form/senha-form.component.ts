@@ -12,8 +12,8 @@ export class SenhaFormComponent {
 
     constructor(private formBuilder: FormBuilder){
         this.form = this.formBuilder.group({
-            senha: [null, Validators.required],
-            novaSenha: [null, Validators.required],
+            senha: [null, [Validators.required, Validators.minLength(4)]],
+            novaSenha: [null, Validators.required, Validators.minLength(4)],
             novaSenhaConfirmacao: [null, Validators.required],
         });
     }

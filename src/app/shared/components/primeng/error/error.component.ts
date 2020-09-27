@@ -47,7 +47,11 @@ export class CustomErrorComponent implements OnInit, OnDestroy {
 
         if ('required' === propertyName || 'empty' === propertyName) {
             return 'Campo obrigatório';
-        } else if ('email' === propertyName){
+        } else if ('min' === propertyName) {
+            return `Valor não pode ser menor que ${this.control.errors[propertyName].min}.`;
+        } else if ('minlength' === propertyName) {
+            return `Mínimo de ${this.control.errors[propertyName].requiredLength} caracteres é necessário.`;
+        }else if ('email' === propertyName){
             return 'E-mail inválido'
         }
 
