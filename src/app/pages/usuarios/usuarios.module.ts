@@ -12,6 +12,7 @@ import { SenhaFormComponent } from './shared/senha-form/senha-form.component';
 import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 import { UsuarioTableComponent } from './shared/usuario-table/usuario-table.component';
 import { UsuarioFilterComponent } from './shared/usuario-filter/usuario-filter.component';
+import { UsuarioValidateComponent } from './usuario-validate/usuario-validate.component';
 
 @NgModule({
     imports: [
@@ -29,6 +30,7 @@ import { UsuarioFilterComponent } from './shared/usuario-filter/usuario-filter.c
         UsuarioFormComponent,
         UsuarioFormViewComponent,
         UsuarioTableComponent,
+        UsuarioValidateComponent,
         UsuarioViewComponent,
     ]
 })

@@ -19,7 +19,6 @@ const routes: Routes = [
     {
         path: 'usuario',
         loadChildren: () => import('./pages/usuarios/usuarios.module').then(m => UsuariosModule),
-        canActivate: [AuthGuard]
     },
     {
         path: 'errors',
