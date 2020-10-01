@@ -14,14 +14,12 @@ const url = `${environment.ApiUrl}/usuario`;
 export class UserService extends AbstractService<User, number>{
     private userSubject = new BehaviorSubject<User> (null);
     private usuario: string;
-    private user;
 
     constructor(
         private tokenService: TokenService, 
         protected http: HttpClient,){
         super(url, http);
         this.tokenService.hasToken() && this.decodeAndNotify();
-        this.findUsuarioLogado().subscribe(u => this.setusuarioLogado(u));
     }
 
     setToken(token: string) {
@@ -42,7 +40,6 @@ export class UserService extends AbstractService<User, number>{
 
     logout(){
         this.tokenService.removeToken();
-        this.setusuarioLogado(null);
         this.userSubject.next(null);
     }
 
@@ -61,14 +58,6 @@ export class UserService extends AbstractService<User, number>{
 
     getUserName(){
         return this.usuario;
-    }
-
-    setusuarioLogado(user: User): void {
-        this.user = user;
-    }
-
-    getUsuarioLogado(): User{
-        return this.user;
     }
 
     findUsuarioLogado(): Observable<User> {

@@ -8,7 +8,7 @@ import { Observable, of, Subject } from 'rxjs';
 import { MsTableDataSource } from '../table/table.data-source';
 import { AbstractModel, Pageable, User } from 'app/shared/components/models';
 import { AbstractService, MessagesService, UserService } from 'app/core/services';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, map } from 'rxjs/operators';
 
 export abstract class PageListComponent<E extends AbstractModel<ID>, ID> implements AfterViewInit, OnInit, OnDestroy {
     @ViewChild('filterForm', { static: true }) filterForm: any;
@@ -16,7 +16,7 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
     modelParent: any;
     modelParent$: Observable<any>;
     dataSource: MsTableDataSource<E, ID>;
-    editor: boolean;
+    editor$: Observable<boolean>;
 
     protected unsubscribeAll = new Subject<any>();
 
@@ -70,7 +70,8 @@ export abstract class PageListComponent<E extends AbstractModel<ID>, ID> impleme
                 }
             })
         }
-        this.editor = this.usuarioService.getUsuarioLogado() ? this.usuarioService.getUsuarioLogado().perfil.id !== 3 : false;
+        this.editor$ = this.usuarioService.findUsuarioLogado()
+            .pipe(map(u => {return u.perfil.id !== 3}));
     }
 
     ngOnDestroy(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'app/shared/components/models';
@@ -13,6 +13,7 @@ import { MenuItem } from 'primeng/primeng';
 export class HeaderComponent implements OnInit{
 
     user$: Observable<User>;
+    usuarioLogado: User;
 
     display = false;
 
@@ -24,12 +25,13 @@ export class HeaderComponent implements OnInit{
     constructor(
         private userService: UserService,
         private router: Router
-    ){
-        this.user$ = this.userService.findUsuarioLogado();
-    }
+    ){}
 
     ngOnInit(): void {
-        this.userService.getUser().subscribe(() => {
+        this.userService.getUser().subscribe(next => {
+            if (!next){
+                return;
+            }
             this.user$ = this.userService.findUsuarioLogado();
             this.user$.subscribe(u => {
                 this.items = [
@@ -59,7 +61,7 @@ export class HeaderComponent implements OnInit{
                         ]
                     },
                 ]
-    
+                
                 this.itemsMenu = [
                     {
                         id: 'modelo-menu',
@@ -75,12 +77,11 @@ export class HeaderComponent implements OnInit{
                 ]
             });
         });
-
-        
     }
-
-    logout(){
-        this.userService.logout();
+        
+        logout(){
+            this.userService.logout();
+        this.user$ = null;
         this.router.navigate(['']);
     }
 

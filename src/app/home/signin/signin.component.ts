@@ -58,11 +58,9 @@ export class SignInComponent implements OnInit, OnDestroy{
                 finalize(() => this.loadingSubject.next(false)),
             )
             .subscribe(
-                () =>  this.userService.findUsuarioLogado().subscribe(u => {
-                        this.userService.setusuarioLogado(u);
-                        this.router.navigate(['modelo']); 
-                    }
-                ),
+                () =>  {
+                    this.router.navigate(['modelo']);
+                },
                 (response: HttpErrorResponse) => {
                     if(response.error){
                         const jsonResponse = JSON.parse(response.error);

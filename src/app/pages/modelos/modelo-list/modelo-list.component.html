@@ -12,7 +12,7 @@
     </div>
 </div>
 <div class="listagem">
-    <modelo-table id="tableModelos" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)" (edit)="onEdit($event)" (remove)="onRemove($event)" (viewImage)="onViewImage($event)" [editor]="editor"></modelo-table>
+    <modelo-table id="tableModelos" [dataSource]="dataSource" (pageChanged)="onPageChanged($event)" (edit)="onEdit($event)" (remove)="onRemove($event)" (viewImage)="onViewImage($event)" [editor]="editor$ | async"></modelo-table>
 </div>
 <div *ngIf="displayImage">
     <component-image-dialog [(display)]="displayImage" [image]="urlImage | async"></component-image-dialog>
