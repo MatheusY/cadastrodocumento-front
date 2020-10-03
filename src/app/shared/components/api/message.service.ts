@@ -5,7 +5,7 @@ export abstract class MessagesService {
     static INVALID_FORM = 'Formulário possui campos inválidos';
     static SERVER_ERROR = 'Ocorreu um erro durante o processamento da requisição no servidor! Tente novamente mais tarde'
 
-    success: (detail: string) => void;
+    success: (detail: string, time?: number) => void;
 
     info: (detail: string) => void;
 

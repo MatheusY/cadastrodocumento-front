@@ -1,0 +1,25 @@
+<div class="ui-g-12 titulo">
+    <span>Cadastro Usuário</span>
+</div>
+
+<form [formGroup]="form" class="ui-g-12">
+
+    <div class="field-login">
+        <component-input-text id="usuario" label="Usuário"></component-input-text>
+    </div>
+    <div class="field-login">
+        <component-input-text id="email" label="Email"></component-input-text>
+    </div>
+    <div class="field-login">
+        <component-input-password id="senha" label="Senha" feedback="true"></component-input-password>
+    </div>
+    <div class="field-login">
+        <component-input-password id="confirmacao-senha" label="Digite novamente a senha"></component-input-password>
+    </div>
+
+    <div class="login-button">
+        <component-button id="cancel" theme="cancel" (click)="onCancel($event)"></component-button>
+        <component-button id="save" theme="save" (click)="onSave($event)" [loading]="loading$ | async"></component-button>
+    </div>
+
+</form>

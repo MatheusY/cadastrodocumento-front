@@ -3,6 +3,7 @@ import { LoginGuard } from '../core/auth/login.guard';
 import { SignInComponent } from './signin/signin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignUpComponent } from './signup/signup.component';
 
 const routes: Routes = [
     {
@@ -15,6 +16,13 @@ const routes: Routes = [
                 component: SignInComponent,
                 data: {
                     title: 'Sign in'
+                }
+            },
+            {
+                path: 'signup',
+                component: SignUpComponent,
+                data: {
+                    title: 'Cadastrar'
                 }
             }
         ]

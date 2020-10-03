@@ -1,3 +1,6 @@
+<div class="ui-g-12 titulo">
+    <span>Login</span>
+</div>
 <form [formGroup]="form" class="ui-g-12">
 
     <div class="field-login">
@@ -7,6 +10,12 @@
         <component-input-password id="senha" label="Senha"></component-input-password>
     </div>
 
-    <component-button id="login" theme="login" (click)="login()"></component-button>
+    <div class="login-button">
+        <component-button id="login" theme="login" (click)="login()"></component-button>
+    </div>
+
+    <div class="">
+        <a routerLink="signup" routerLinkActive="active">Não tem cadasto? Cadastre-se aqui</a>
+    </div>
 
 </form>

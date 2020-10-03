@@ -8,10 +8,12 @@ import { HomeRoutingModule } from './home.routing.module';
 import { VMessageModule } from '../shared/components/vmessage/vmessage.module';
 import {ButtonModule} from 'primeng/button';
 import { SharedComponentsModule } from 'app/shared/components/components.module';
+import { SignUpComponent } from './signup/signup.component';
 
 @NgModule({
     declarations: [
         SignInComponent,
+        SignUpComponent,
         HomeComponent
     ],
     imports: [

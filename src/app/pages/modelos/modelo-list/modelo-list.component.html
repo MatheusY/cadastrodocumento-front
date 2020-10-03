@@ -1,4 +1,4 @@
-<div *ngIf="editor" class="adicionar">
+<div *ngIf="editor$ | async" class="adicionar">
     <component-button id="add" theme="add" (click)="onAdd($event)" ></component-button>
 </div>
 

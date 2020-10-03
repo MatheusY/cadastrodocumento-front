@@ -16,8 +16,8 @@ export class CustomToastService implements MessagesService {
         }
     }
 
-    success(detail: string): void{
-        this.add({ severity: 'success', summary: 'Sucesso', detail });
+    success(detail: string, life: number = 10000): void{
+        this.add({ severity: 'success', summary: 'Sucesso', detail, life});
     }
 
     info (detail: string): void{

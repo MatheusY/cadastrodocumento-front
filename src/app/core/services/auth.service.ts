@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { environment } from 'environments/environment';
+import { User } from 'app/shared/components/models';
 
 const API_URL = environment.ApiUrl;
 
@@ -29,6 +30,15 @@ export class AuthService {
                 this.userService.setToken(authToken);
                 console.log(`User ${usuario} authenticated with token ${authToken}`);
             }));
+    }
+
+    cadastraConta(usuario: User){
+        const headers = new HttpHeaders({
+            'Content-type': 'application/json; charset=utf-8'
+        });
+        const urlCadastro = this.url + 'cadastrar';
+        return this.http
+            .post(urlCadastro, usuario, {headers});
     }
 
     validaEmail(id: string, key: string){
