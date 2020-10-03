@@ -1,37 +1,50 @@
-<p-table
-    id="id + '--table'"
-    [value]="dataSource.data"
-    [lazy]="true"
-    [rows]="dataSource.pageable?.pageSize"
-    [responsive]="true"
-    [paginator]="true"
-    [rowsPerPageOptions]="[5,10]"
-    [totalRecords]="dataSource.total"
-    [first]="first"
-    currentPageReportTemplate="{currentPage} de {totalPages}"
-    [showCurrentPageReport]="false"
-    (onPage)="onPageChanged($event)"
-    tableStyleClass="table-list">
-    <ng-template pTemplate="header">
-        <tr>
-            <th *ngFor="let columnName of columnNames" scope="col">{{columnName}}</th>
-            <th *ngIf="columnMenu && editor" scope="col" style="width: 100px;">
-                {{columnMenu.header}}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-row>
-        <tr (dblclick)="onRowDblClick(row)">
-            <td *ngFor="let col of columns">
-                <ng-container *ngTemplateOutlet="col.template; context: {$implicit: row}"></ng-container>
-            </td>
-            <td *ngIf="columnMenu && editor">
-                <ng-container *ngTemplateOutlet="columnMenu.template; context: {$implicit: row}"></ng-container>
-            </td>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="paginatorright" let-state>
-        <span>Total de {{state.totalRecords}} {{state.totalRecords > 1 ? 'registros' : 'registro'}}</span>
-    </ng-template>
+<ng-container *ngIf="dataSource.total === 0; else results">
+    <div id="alert" class="alertRegister">
+        <p class="message">
+            <i class="material-icons">
+            priority_high
+            </i>
+        <span>Não há registros para exibição.</span>
+        </p>
+    </div>
+</ng-container>
 
-</p-table>
+<ng-template #results>
+    <p-table
+        id="id + '--table'"
+        [value]="dataSource.data"
+        [lazy]="true"
+        [rows]="dataSource.pageable?.pageSize"
+        [responsive]="true"
+        [paginator]="true"
+        [rowsPerPageOptions]="[5,10]"
+        [totalRecords]="dataSource.total"
+        [first]="first"
+        currentPageReportTemplate="{currentPage} de {totalPages}"
+        [showCurrentPageReport]="false"
+        (onPage)="onPageChanged($event)"
+        tableStyleClass="table-list">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let columnName of columnNames" scope="col">{{columnName}}</th>
+                <th *ngIf="columnMenu && editor" scope="col" style="width: 100px;">
+                    {{columnMenu.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+            <tr (dblclick)="onRowDblClick(row)">
+                <td *ngFor="let col of columns">
+                    <ng-container *ngTemplateOutlet="col.template; context: {$implicit: row}"></ng-container>
+                </td>
+                <td *ngIf="columnMenu && editor">
+                    <ng-container *ngTemplateOutlet="columnMenu.template; context: {$implicit: row}"></ng-container>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorright" let-state>
+            <span>Total de {{state.totalRecords}} {{state.totalRecords > 1 ? 'registros' : 'registro'}}</span>
+        </ng-template>
+
+    </p-table>
+</ng-template>

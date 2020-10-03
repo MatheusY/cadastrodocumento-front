@@ -21,3 +21,25 @@
     border-right: 2px solid black !important;
     border-bottom: 2px solid black !important;
 }
+
+.alertRegister {
+    background: #ffd39b;
+    border-left: 10px solid #fabb01;
+    padding: 5px 15px;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    i {
+      width: 36px;
+      height: 36px;
+      background: whitesmoke;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      border-radius: 50px;
+      margin-right: 15px;
+    }
+  }
