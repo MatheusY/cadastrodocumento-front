@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { PageListComponent } from 'app/shared/components/page';
-import { User, Perfil } from 'app/shared/components/models';
+import { User, Perfil, Pageable } from 'app/shared/components/models';
 import { UserService, MessagesService, PerfissService } from 'app/core/services';
 import { Component } from '@angular/core';
 
@@ -44,5 +44,20 @@ export class UsuarioListComponent extends PageListComponent<User, number> {
                 'redirectUrl': rota,
             }
         })
+    }
+
+    onReset(even?: any): void {
+        this.filterForm.form.patchValue(
+            {
+                usuario: null,
+                email: null,
+                perfil: null,
+                ativo: true,
+                inativo: true,
+            }
+        );
+        this.dataSource.clear();
+        this.router.navigate([],{});
+        this.onSearch();
     }
 }

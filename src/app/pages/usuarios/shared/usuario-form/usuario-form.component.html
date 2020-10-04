@@ -16,5 +16,8 @@
                 <label class="usuario-dado">{{model?.perfil.descricao}}</label>
             </ng-template>
         </div>
+        <div>
+            <p-checkbox id="ativo" label="Ativo" binary="true" [formControl]="form.controls['ativo']" ></p-checkbox>
+        </div>
     </form>
 </div>

@@ -7,4 +7,5 @@ export class User extends AbstractModel<number>{
     perfil?: Perfil;
     senha?: string;
     novaSenha?: string;
+    ativo?: boolean;
 }

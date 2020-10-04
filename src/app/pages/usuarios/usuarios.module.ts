@@ -13,9 +13,11 @@ import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 import { UsuarioTableComponent } from './shared/usuario-table/usuario-table.component';
 import { UsuarioFilterComponent } from './shared/usuario-filter/usuario-filter.component';
 import { UsuarioValidateComponent } from './usuario-validate/usuario-validate.component';
+import { CheckboxModule } from 'primeng/primeng';
 
 @NgModule({
     imports: [
+        CheckboxModule,
         CommonModule,
         SharedComponentsModule,
         RouterModule,

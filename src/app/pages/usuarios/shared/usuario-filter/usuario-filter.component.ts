@@ -7,6 +7,7 @@ import { Perfil } from 'app/shared/components/models';
 @Component({
     selector: 'usuario-filter',
     templateUrl: './usuario-filter.component.html',
+    styleUrls: ['./usuario-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsuarioFilterComponent {
@@ -24,6 +25,8 @@ export class UsuarioFilterComponent {
             usuario: [null],
             email: [null],
             perfil: [null],
+            ativo: [true],
+            inativo: [true],
         });
     }
 

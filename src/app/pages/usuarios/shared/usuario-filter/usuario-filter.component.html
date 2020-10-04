@@ -1,15 +1,21 @@
 <form id="form" [formGroup]="form" (keydown)="onEnter($event)">
     <div class="ui-g ui-fluid">
-        <div class="ui-md-4">
+        <div class="ui-md-3">
             <component-input-text id="usuario" label="Usuário"></component-input-text>
         </div>
 
-        <div class="ui-md-4">
+        <div class="ui-md-3">
             <component-input-text id="email" label="Email"></component-input-text>
         </div>
 
-        <div class="ui-md-4">
+        <div class="ui-md-2">
             <component-select id="perfil" label="Perfil" [options]="perfis" optionLabel="descricao"></component-select>
-        </div>        
+        </div>
+        <div class="ui-md-2 check-filter">
+            <p-checkbox id="ativo" label="Mostrar usuários ativos" binary="true" [formControl]="form.controls['ativo']" ></p-checkbox>
+        </div>
+        <div class="ui-md-2 check-filter">
+            <p-checkbox id="inativo" label="Mostrar usuários inativos" binary="true" [formControl]="form.controls['inativo']" ></p-checkbox>
+        </div>           
     </div>
 </form>

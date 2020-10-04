@@ -20,7 +20,8 @@ export class UsuarioFormComponent {
         this.form = this.formBuilder.group({
             usuario: ['Usuario', Validators.required],
             email: ['Email', Validators.required],
-            perfil: ['Perfil', Validators.required]
+            perfil: ['Perfil', Validators.required],
+            ativo: [true],
         });
     }
 
@@ -48,5 +49,8 @@ export class UsuarioFormComponent {
         return this._model;
     }
 
+    onAtivo(){
+        console.log(this.form);
+    }
 
 }
