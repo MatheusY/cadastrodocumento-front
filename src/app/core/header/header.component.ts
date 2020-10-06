@@ -79,8 +79,8 @@ export class HeaderComponent implements OnInit{
         });
     }
         
-        logout(){
-            this.userService.logout();
+    logout(){
+        this.userService.logout();
         this.user$ = null;
         this.router.navigate(['']);
     }

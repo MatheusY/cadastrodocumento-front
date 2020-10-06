@@ -1,13 +1,11 @@
-import { OnInit, Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { OnInit, Component, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService, MessagesService, UserService } from 'app/core/services';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { User } from 'app/shared/components/models';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { HttpErrorResponse } from '@angular/common/http';
-
-
 
 @Component({
     templateUrl: './signin.component.html',

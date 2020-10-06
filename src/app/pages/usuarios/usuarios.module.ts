@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CheckboxModule } from 'primeng/primeng';
 import { SharedComponentsModule } from 'app/shared/components/components.module';
 import { UsuarioViewComponent } from './usuario-view/usuario-view.component';
 import { UsuarioFormViewComponent } from './shared/usuario-form-view/usuario-form-view.component';
@@ -13,7 +14,7 @@ import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 import { UsuarioTableComponent } from './shared/usuario-table/usuario-table.component';
 import { UsuarioFilterComponent } from './shared/usuario-filter/usuario-filter.component';
 import { UsuarioValidateComponent } from './usuario-validate/usuario-validate.component';
-import { CheckboxModule } from 'primeng/primeng';
+import { SenhaResetComponent } from './senha-reset/senha-reset.component';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { CheckboxModule } from 'primeng/primeng';
     declarations: [
         SenhaEditComponent,
         SenhaFormComponent,
+        SenhaResetComponent,
         UsuarioEditComponent,
         UsuarioListComponent,
         UsuarioFilterComponent,

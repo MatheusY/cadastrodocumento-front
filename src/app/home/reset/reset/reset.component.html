@@ -1,0 +1,9 @@
+<reset-form
+    id="formulario"
+    #modelForm>
+</reset-form>
+
+<div class="ui-g-12 center">
+    <component-button id="cancel" theme="cancel" (click)="onCancel($event)"></component-button>
+    <component-button id="confirm" text="Confirmar" (click)="onConfirm($event)" [loading]="loading$ | async" loadingText="Enviando" loadingType="spinner"></component-button>
+</div>

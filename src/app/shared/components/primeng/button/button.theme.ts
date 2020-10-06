@@ -15,7 +15,6 @@ export class CustomButtonThemes {
         icon: { fontIcon: 'pi pi-ban', position: 'left'},
         styleClass: 'cancel-button',
         active: false,
-
     }
 
     static DELETE: ButtonOptions = {

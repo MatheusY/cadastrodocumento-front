@@ -38,7 +38,7 @@ export class UsuarioFormComponent {
 
     @Input()
     set usuarioLogado(value: User) {
-        if(value && value.perfil.id === 1){
+        if(value && value.perfil.id === 1 && value.usuario !== this.form.get('usuario').value){
             this.isAdmin = true;
         } else {
             this.isAdmin = false;

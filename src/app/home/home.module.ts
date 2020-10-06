@@ -9,9 +9,13 @@ import { VMessageModule } from '../shared/components/vmessage/vmessage.module';
 import {ButtonModule} from 'primeng/button';
 import { SharedComponentsModule } from 'app/shared/components/components.module';
 import { SignUpComponent } from './signup/signup.component';
+import { ResetComponent } from './reset/reset/reset.component';
+import { ResetFormComponent } from './reset/shared/reset-form/reset-form.component';
 
 @NgModule({
     declarations: [
+        ResetComponent,
+        ResetFormComponent,
         SignInComponent,
         SignUpComponent,
         HomeComponent

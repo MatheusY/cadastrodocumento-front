@@ -1,0 +1,9 @@
+<senha-form
+    id="formulario"
+    tipo="reset"
+    #modelForm>
+</senha-form>
+
+<div class="ui-g-12 center">
+    <component-button id="confirm" text="Confirmar" (click)="onConfirm($event)" [loading]="loading$ | async" loadingText="" loadingType="spinner"></component-button>
+</div>

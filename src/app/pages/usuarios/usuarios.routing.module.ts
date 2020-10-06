@@ -7,6 +7,7 @@ import { SenhaEditComponent } from './senha-edit/senha-edit.component';
 import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 import { AuthGuard } from 'app/core/auth/auth.guard';
 import { UsuarioValidateComponent } from './usuario-validate/usuario-validate.component';
+import { SenhaResetComponent } from './senha-reset/senha-reset.component';
 
 const routes: Routes = [
     {
@@ -37,7 +38,11 @@ const routes: Routes = [
     },
     {
         path: 'validar-conta/:id',
-        component:UsuarioValidateComponent,
+        component: UsuarioValidateComponent,
+    },
+    {
+        path: 'reset-senha',
+        component: SenhaResetComponent,
     },
     {
         path: '',

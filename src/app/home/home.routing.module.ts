@@ -4,6 +4,7 @@ import { SignInComponent } from './signin/signin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './signup/signup.component';
+import { ResetComponent } from './reset/reset/reset.component';
 
 const routes: Routes = [
     {
@@ -23,6 +24,13 @@ const routes: Routes = [
                 component: SignUpComponent,
                 data: {
                     title: 'Cadastrar'
+                }
+            },
+            {
+                path: 'reset',
+                component: ResetComponent,
+                data: {
+                    title: 'Esqueci minha senha'
                 }
             }
         ]
